@@ -4,31 +4,111 @@
     <meta charset="UTF-8" />
     <title>Music Quiz</title>
     <link rel="stylesheet" href="css/styles.css" />
-    <script src="js/app.js" defer></script>
+    <script type="module" src="js/app.js" defer></script>
 </head>
 <body>
 <header>
     <h1>🎵 Music Quiz</h1>
     <nav>
         <ul>
-            <li><a href="#" data-section="home">Home</a></li>
-            <li><a href="#" data-section="quiz-set-up">Play</a></li>
-            <li><a href="#" data-section="genres">Genres</a></li>
-            <li><a href="#" data-section="musicians">Musicians</a></li>
+            <li><a href="#" data-section="home-section">Home</a></li>
+            <li><a href="#" data-section="quiz-set-up-section">Play</a></li>
+            <li><a href="#" data-section="genres-section">Genres</a></li>
+            <li><a href="#" data-section="musicians-section">Musicians</a></li>
         </ul>
     </nav>
 </header>
 
 <main>
-    <section id="home"> HOME </section>
-    <section id="genres" hidden> GENRES </section>
-    <section id="musicians" hidden> MUSICIANS </section>
-    <section id="quiz-set-up" hidden> SET UP </section>
-    <section id="quiz" hidden> QUIZ </section>
+    <section id="home-section"> HOME </section>
+    <section id="genres-section" hidden> GENRES </section>
+    <section id="musicians-section" hidden> MUSICIANS </section>
+    <section id="quiz-section" hidden> QUIZ </section>
+
+    <section id="quiz-set-up-section" hidden>
+        <form id="quiz-set-up-form">
+            <fieldset id="game-mode">
+                <legend>Game Mode</legend>
+                <input type="radio" id="guess-song" name="game-mode" value="song" required>
+                <label for="guess-song">Guess song</label>
+                <input type="radio" id="guess-musician" name="game-mode" value="musician" required>
+                <label for="guess-musician">Guess musician</label>
+            </fieldset>
+
+            <fieldset id="musician-mode" hidden>
+                <legend>Musician mode settings</legend>
+
+                <input type="radio" id="musician-by-genre" name="musician-by" value="genre" required>
+                <label for="musician-by-genre">Guess by genre</label>
+                <input type="radio" id="musician-by-all" name="musician-by" value="all" required>
+                <label for="musician-by-all">Guess all musicians</label>
+
+                <fieldset id="musician-mode-genre-choice" hidden>
+                    <legend>Choose genre</legend>
+
+                    <label for="musician-genre">Genre:</label>
+                    <select name="musician-genre" id="musician-genre" required>
+                        <option value="" disabled selected>Not selected</option>
+                        <option value="mockGenre1">mockGenre1</option>
+                        <option value="mockGenre2">mockGenre2</option>
+                    </select>
+                </fieldset>
+            </fieldset>
+
+            <fieldset id="song-mode" hidden>
+                <legend>Song mode settings</legend>
+
+                <input type="radio" id="song-by-genre" name="song-by" value="genre" required>
+                <label for="song-by-genre">Guess by genre</label>
+                <input type="radio" id="song-by-musician" name="song-by" value="musician" required>
+                <label for="song-by-musician">Guess by musician</label>
+                <input type="radio" id="song-by-all" name="song-by" value="all" required>
+                <label for="song-by-all">Guess all songs</label>
+
+                <fieldset id="song-mode-genre-choice" hidden>
+                    <legend>Choose genre</legend>
+
+                    <label for="song-genre">Genre:</label>
+                    <select name="song-genre" id="song-genre" required>
+                        <option value="" disabled selected>Not selected</option>
+                        <option value="mockGenre1">mockGenre1</option>
+                        <option value="mockGenre2">mockGenre2</option>
+                    </select>
+                </fieldset>
+
+                <fieldset id="song-mode-musician-choice" hidden>
+                    <legend>Choose musician</legend>
+
+                    <label for="song-musician">Musician:</label>
+                    <select name="song-musician" id="song-musician" required>
+                        <option value="" disabled selected>Not selected</option>
+                        <option value="mockMusician1">mockMusician1</option>
+                        <option value="mockMusician2">mockMusician2</option>
+                    </select>
+                </fieldset>
+            </fieldset>
+
+            <fieldset id="additional-settings">
+                <legend>Additional setting</legend>
+
+                <label for="listen-seconds">Seconds to listen:</label>
+                <input type="range" id="listen-seconds" name="listen-seconds" min="1" max="5" step="2" />
+
+                <label for="question-number">Number of questions:</label>
+                <input type="range" id="question-number" name="question-number" min="1" max="5" step="1" />
+
+                <label for="replay-number">Number of replays:</label>
+                <input type="range" id="replay-number" name="replay-number" min="1" max="5" step="1" />
+            </fieldset>
+
+            <button id="quiz-set-up-submit" type="submit">Play</button>
+        </form>
+    </section>
+
 </main>
 
 <footer>
-    <p>&copy; 2025 Music Quiz App</p>
+    <p>Music Quiz 2025 developed by Ales Shvaibovich</p>
 </footer>
 
 </body>

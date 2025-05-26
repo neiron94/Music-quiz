@@ -1,16 +1,5 @@
-const links = document.querySelectorAll('nav a');
-const sections = document.querySelectorAll('main > section');
+import { setUpFormShowHide } from './formShowHide.js';
+import { setUpNavigation } from './navigation.js';
 
-function showSection(id) {
-    sections.forEach(section => {
-        section.hidden = section.id !== id;
-    });
-}
-
-links.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const sectionId = link.dataset.section;
-        showSection(sectionId);
-    });
-});
+setUpNavigation();
+setUpFormShowHide();
