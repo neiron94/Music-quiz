@@ -1,0 +1,21 @@
+[
+  {
+    "name": "rock",
+    "description": "",
+    "image": "",
+    "musicians": [
+      {
+        "name": "Metallica",
+        "description": "",
+        "image": "",
+        "songs": [
+          {
+            "name": "For Whom The Bell Tolls",
+            "image": "",
+            "audioDir": ""
+          }
+        ]
+      }
+    ]
+  }
+]
