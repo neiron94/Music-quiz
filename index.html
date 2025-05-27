@@ -12,7 +12,7 @@
     <nav>
         <ul>
             <li><a href="#" data-section="home-section">Home</a></li>
-            <li><a href="#" data-section="quiz-set-up-section">Play</a></li>
+            <li><a href="#" data-section="quiz-set-up-section" id="play-navigation">Play</a></li>
             <li><a href="#" data-section="genres-section">Genres</a></li>
             <li><a href="#" data-section="musicians-section">Musicians</a></li>
         </ul>
@@ -47,11 +47,7 @@
                     <legend>Choose genre</legend>
 
                     <label for="musician-genre">Genre:</label>
-                    <select name="musician-genre" id="musician-genre" required>
-                        <option value="" disabled selected>Not selected</option>
-                        <option value="mockGenre1">mockGenre1</option>
-                        <option value="mockGenre2">mockGenre2</option>
-                    </select>
+                    <select name="musician-genre" id="musician-genre" required></select>
                 </fieldset>
             </fieldset>
 
@@ -69,26 +65,18 @@
                     <legend>Choose genre</legend>
 
                     <label for="song-genre">Genre:</label>
-                    <select name="song-genre" id="song-genre" required>
-                        <option value="" disabled selected>Not selected</option>
-                        <option value="mockGenre1">mockGenre1</option>
-                        <option value="mockGenre2">mockGenre2</option>
-                    </select>
+                    <select name="song-genre" id="song-genre" required></select>
                 </fieldset>
 
                 <fieldset id="song-mode-musician-choice" hidden>
                     <legend>Choose musician</legend>
 
                     <label for="song-musician">Musician:</label>
-                    <select name="song-musician" id="song-musician" required>
-                        <option value="" disabled selected>Not selected</option>
-                        <option value="mockMusician1">mockMusician1</option>
-                        <option value="mockMusician2">mockMusician2</option>
-                    </select>
+                    <select name="song-musician" id="song-musician" required></select>
                 </fieldset>
             </fieldset>
 
-            <fieldset id="additional-settings">
+            <fieldset id="additional-settings" hidden>
                 <legend>Additional setting</legend>
 
                 <label for="listen-seconds">Seconds to listen:</label>
@@ -101,7 +89,7 @@
                 <input type="range" id="replay-number" name="replay-number" min="1" max="5" step="1" />
             </fieldset>
 
-            <button id="quiz-set-up-submit" type="submit">Play</button>
+            <button id="quiz-set-up-submit" type="submit" hidden>Play</button>
         </form>
     </section>
 
