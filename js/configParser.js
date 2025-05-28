@@ -1,4 +1,4 @@
-import { Genre, Musician, Song } from './model.js';
+import { Genre, Musician, Song } from './model/entities.js';
 import { genres, musicians, songs } from './global.js';
 
 export async function parseConfig() {

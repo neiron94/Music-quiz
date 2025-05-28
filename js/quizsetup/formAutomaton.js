@@ -1,4 +1,7 @@
-import { recalculateQuestionNumber } from './questionCounter.js';
+import { currentFormState } from "../global.js";
+import { getAllQuestionEntities } from './questionEntitiesProvider.js';
+
+const MAX_QUESTIONS = 50;
 
 export function setUpStateTransitions() {
     playNavigationButton.addEventListener('click', () => transitionTo('start'));
@@ -49,6 +52,8 @@ const stateMap = {
 };
 
 function transitionTo(state) {
+    currentFormState = state;
+
     // Start specific
     if (state === 'start') {
         songModeRadio.checked = songModeRadio.defaultChecked;
@@ -56,7 +61,7 @@ function transitionTo(state) {
     }
 
     // Dynamically change number of available questions for provided settings
-    recalculateQuestionNumber(state);
+    recalculateQuestionNumber();
 
     // Hide all fieldsets (and submit button)
     document.querySelectorAll('#quiz-set-up-form fieldset').forEach(fs => fs.hidden = true);
@@ -69,6 +74,14 @@ function transitionTo(state) {
 
     // Reset irrelevant parts
     resetIrrelevantFieldsets(state);
+}
+
+function recalculateQuestionNumber() {
+    const inputElement = document.getElementById('question-number');
+    const possibleQuestionNumber = getAllQuestionEntities().length;
+    inputElement.max = possibleQuestionNumber > MAX_QUESTIONS ? MAX_QUESTIONS : possibleQuestionNumber;
+    inputElement.value = Math.floor((inputElement.min + inputElement.max) / 2);
+    inputElement.defaultValue = inputElement.value;
 }
 
 function resetIrrelevantFieldsets(state) {

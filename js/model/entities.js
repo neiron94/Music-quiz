@@ -23,7 +23,3 @@ export class Song {
         this.audioDir = audioDir;
     }
 }
-
-export class Quiz {
-
-}
