@@ -1,5 +1,5 @@
-import { currentFormState } from "../global.js";
-import { getAllQuestionEntities } from './questionEntitiesProvider.js';
+import { setCurrentFormState } from "../global.js";
+import { getAllPossibleAnswers } from './answerProvider.js';
 
 const MAX_QUESTIONS = 50;
 
@@ -52,7 +52,7 @@ const stateMap = {
 };
 
 function transitionTo(state) {
-    currentFormState = state;
+    setCurrentFormState(state);
 
     // Start specific
     if (state === 'start') {
@@ -78,7 +78,7 @@ function transitionTo(state) {
 
 function recalculateQuestionNumber() {
     const inputElement = document.getElementById('question-number');
-    const possibleQuestionNumber = getAllQuestionEntities().length;
+    const possibleQuestionNumber = getAllPossibleAnswers().length;
     inputElement.max = possibleQuestionNumber > MAX_QUESTIONS ? MAX_QUESTIONS : possibleQuestionNumber;
     inputElement.value = Math.floor((inputElement.min + inputElement.max) / 2);
     inputElement.defaultValue = inputElement.value;

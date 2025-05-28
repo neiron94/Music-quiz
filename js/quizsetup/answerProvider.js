@@ -1,31 +1,33 @@
-import { genres, musicians, songs, currentFormState } from '../global.js';
+import { genres, musicians, songs, getCurrentFormState } from '../global.js';
 
 const musicianModeGenreSelect = document.getElementById('musician-genre');
 const songModeGenreSelect = document.getElementById('song-genre');
 const songModeMusicianSelect = document.getElementById('song-musician');
 
-export function getAllQuestionEntities() {
-    switch (currentFormState) {
+export function getAllPossibleAnswers() {
+    switch (getCurrentFormState()) {
         case 'songModeByGenreSelected': {
             const chosenGenre = songModeGenreSelect.value;
-            const filteredMusicians = genres.find(genre => genre.name === chosenGenre).musicians;
-            return filteredMusicians.flatMap(musician => musician.songs);
+            const musicianNames = genres.find(genre => genre.name === chosenGenre).musicians;
+            const filteredMusicians = musicians.filter(m => musicianNames.includes(m));
+            return filteredMusicians.flatMap(m => m.songs);
         }
         case 'songModeByMusicianSelected': {
             const chosenMusician = songModeMusicianSelect.value;
-            return musicians.find(musician => musician.name === chosenMusician).songs;
+            return musicians.find(m => m.name === chosenMusician).songs;
         }
         case 'songModeByAllChecked': {
-            return songs;
+            return songs.map(s => s.name);
         }
         case 'musicianModeByGenreSelected': {
             const chosenGenre = musicianModeGenreSelect.value;
-            return genres.find(genre => genre.name === chosenGenre).musicians;
+            return genres.find(g => g.name === chosenGenre).musicians;
         }
         case 'musicianModeByAllChecked': {
-            return musicians;
+            return musicians.map(m => m.name);
         }
-        default:
+        default: {
             return [];
+        }
     }
 }
