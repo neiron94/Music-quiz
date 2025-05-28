@@ -1,11 +1,11 @@
-import { setUpStateTransitions } from './quizsetup/formAutomaton.js';
-import { setUpNavigation } from './navigation.js';
+import { setUpStateTransitions } from './quiz/formAutomaton.js';
+import { setUpSectionShowHide } from './sectionShowHide.js';
 import { parseConfig } from './configParser.js';
-import { fillSetUpFormHtml } from './quizsetup/htmlFiller.js';
-import { setUpQuizGenerator } from './quizsetup/quizGenerator.js';
+import { fillSetUpFormHtml } from './quiz/htmlFormFiller.js';
+import { setUpQuizGenerator } from './quiz/quizGenerator.js';
 
 await parseConfig();
-setUpNavigation();
+setUpSectionShowHide();
 fillSetUpFormHtml();
 setUpStateTransitions();
 setUpQuizGenerator();

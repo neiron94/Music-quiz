@@ -1,4 +1,13 @@
-export function setUpNavigation() {
+const links = document.querySelectorAll('nav a');
+const submitButton = document.getElementById('quiz-set-up-submit');
+const sections = document.querySelectorAll('main > section');
+
+export function setUpSectionShowHide() {
+    setUpNavigation();
+    setUpQuizShowHide();
+}
+
+function setUpNavigation() {
     links.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -20,10 +29,14 @@ export function setUpNavigation() {
     // });
 }
 
-const links = document.querySelectorAll('nav a');
-const sections = document.querySelectorAll('main > section');
+function setUpQuizShowHide() {
+    submitButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection('quiz-section');
+    })
+}
 
-function showSection(id) {
+export function showSection(id) {
     sections.forEach(section => {
         section.hidden = section.id !== id;
     });

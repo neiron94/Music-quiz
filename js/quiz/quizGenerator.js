@@ -2,6 +2,7 @@ import { musicians, songs, setCurrentQuiz, getCurrentQuiz } from '../global.js';
 import { getAllPossibleAnswers } from './answerProvider.js';
 import { Quiz, QuizQuestion } from '../model/quiz.js';
 import { getRandomSample, getRandomElement } from '../utils.js';
+import { startQuizRender } from "./quizRender.js";
 
 const submitButton = document.getElementById('quiz-set-up-submit');
 const setUpForm = document.getElementById('quiz-set-up-form');
@@ -10,7 +11,7 @@ export function setUpQuizGenerator() {
     submitButton.addEventListener('click', e => {
         e.preventDefault();
         generateQuiz();
-        console.log(getCurrentQuiz());
+        startQuizRender();
     });
 }
 
@@ -19,14 +20,18 @@ function generateQuiz() {
     const gameMode = formData.get('game-mode');
 
     const allAnswers = getAllPossibleAnswers();
+    console.log('HERE');
     const chosenAnswers = getRandomSample(allAnswers, formData.get('question-number'));
+
+    console.log(allAnswers);
+    console.log(chosenAnswers);
 
     const questions = []
 
     for (const answerName of chosenAnswers) {
         // Audio
         const audioDir = getAudioDir(gameMode, answerName);
-        const filename = formData.get('listen-seconds');
+        const filename = formData.get('listen-duration');
         const audio = `${audioDir}/${filename}.mp3`;
 
         // Image
@@ -50,6 +55,8 @@ function generateQuiz() {
     }
 
     setCurrentQuiz(new Quiz(questions, formData.get('replay-number')));
+    console.log(questions);
+    console.log(getCurrentQuiz());
 }
 
 function getAudioDir(gameMode, answerName) {

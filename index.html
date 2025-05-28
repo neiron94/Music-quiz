@@ -23,7 +23,6 @@
     <section id="home-section"> HOME </section>
     <section id="genres-section" hidden> GENRES </section>
     <section id="musicians-section" hidden> MUSICIANS </section>
-    <section id="quiz-section" hidden> QUIZ </section>
 
     <section id="quiz-set-up-section" hidden>
         <form id="quiz-set-up-form">
@@ -79,8 +78,12 @@
             <fieldset id="additional-settings" hidden>
                 <legend>Additional setting</legend>
 
-                <label for="listen-seconds">Seconds to listen:</label>
-                <input type="range" id="listen-seconds" name="listen-seconds" min="1" max="5" step="2" />
+                <label for="listen-duration">Listen duration:</label>
+                <select id="listen-duration" name="listen-duration" required>
+                    <option value="easy">easy</option>
+                    <option value="normal">normal</option>
+                    <option value="hard">hard</option>
+                </select>
 
                 <label for="question-number">Number of questions:</label>
                 <input type="range" id="question-number" name="question-number" min="1" max="5" step="1" />
@@ -93,6 +96,35 @@
         </form>
     </section>
 
+    <section id="quiz-section" hidden>
+        <div class="quiz-header">
+            <div class="question-info">
+                <span id="question-counter">Question: 1 / 10</span>
+                <span id="correct-counter">Correct: 0</span>
+            </div>
+            <div class="replay-info">
+                <button id="replay-button" aria-label="Replay song">🔁 Replay</button>
+                <span id="replay-counter">Replays: 0 / 3</span>
+            </div>
+        </div>
+
+        <figure class="quiz-image">
+            <img id="quiz-image" src="static/img/placeholder.svg" alt="Musician or Album Cover" />
+            <figcaption id="image-caption"></figcaption>
+        </figure>
+
+        <div class="quiz-answers">
+            <button class="answer-button" data-index="0">Answer 1</button>
+            <button class="answer-button" data-index="1">Answer 2</button>
+            <button class="answer-button" data-index="2">Answer 3</button>
+            <button class="answer-button" data-index="3">Answer 4</button>
+        </div>
+    </section>
+
+    <section id="results-section" hidden>
+        <h2>Quiz Finished</h2>
+        <p id="results-text">Statistic</p>
+    </section>
 </main>
 
 <footer>

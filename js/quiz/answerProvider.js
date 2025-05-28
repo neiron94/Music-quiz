@@ -9,7 +9,7 @@ export function getAllPossibleAnswers() {
         case 'songModeByGenreSelected': {
             const chosenGenre = songModeGenreSelect.value;
             const musicianNames = genres.find(genre => genre.name === chosenGenre).musicians;
-            const filteredMusicians = musicians.filter(m => musicianNames.includes(m));
+            const filteredMusicians = musicians.filter(m => musicianNames.includes(m.name));
             return filteredMusicians.flatMap(m => m.songs);
         }
         case 'songModeByMusicianSelected': {
