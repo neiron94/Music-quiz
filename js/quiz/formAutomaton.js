@@ -24,79 +24,155 @@ const playNavigationButton = document.getElementById('play-navigation');
 
 const songModeRadio = document.getElementById('guess-song');
 const songByGenreRadio = document.getElementById('song-by-genre');
-const songByGenreSelect = document.getElementById('song-genre');
+const songByGenreSelect = document.getElementById('song-genre-select');
 const songByMusicianRadio = document.getElementById('song-by-musician');
-const songByMusicianSelect = document.getElementById('song-musician');
+const songByMusicianSelect = document.getElementById('song-musician-select');
 const allSongsRadio = document.getElementById('song-by-all');
 
 const musicianModeRadio = document.getElementById('guess-musician');
 const musicianByGenreRadio = document.getElementById('musician-by-genre');
-const musicianByGenreSelect = document.getElementById('musician-genre');
+const musicianByGenreSelect = document.getElementById('musician-genre-select');
 const allMusiciansRadio = document.getElementById('musician-by-all');
 
+const questionNumberInput = document.getElementById('question-number');
 
-// Shows ids of fieldsets (and submit button) which should be displayed for each state.
-// Other fieldsets should be refreshed and hidden.
+
 const stateMap = {
-    start: ['game-mode'],
-    songModeChecked: ['game-mode', 'song-mode'],
-    songModeByGenreChecked: ['game-mode', 'song-mode', 'song-mode-genre-choice'],
-    songModeByGenreSelected: ['game-mode', 'song-mode', 'song-mode-genre-choice', 'additional-settings', 'quiz-set-up-submit'],
-    songModeByMusicianChecked: ['game-mode', 'song-mode', 'song-mode-musician-choice'],
-    songModeByMusicianSelected: ['game-mode', 'song-mode', 'song-mode-musician-choice', 'additional-settings', 'quiz-set-up-submit'],
-    songModeByAllChecked: ['game-mode', 'song-mode', 'additional-settings', 'quiz-set-up-submit'],
-    musicianModeChecked: ['game-mode', 'musician-mode'],
-    musicianModeByGenreChecked: ['game-mode', 'musician-mode', 'musician-mode-genre-choice'],
-    musicianModeByGenreSelected: ['game-mode', 'musician-mode', 'musician-mode-genre-choice', 'additional-settings', 'quiz-set-up-submit'],
-    musicianModeByAllChecked: ['game-mode', 'musician-mode', 'additional-settings', 'quiz-set-up-submit'],
+    start: {
+        shownFieldSets: ['game-mode'],
+        hiddenInputs: [],
+        visibleResets: ['guess-song', 'guess-musician'],
+        showSubmit: false
+    },
+    songModeChecked: {
+        shownFieldSets: ['game-mode', 'song-mode'],
+        hiddenInputs: ['song-genre-select-span', 'song-musician-select-span'],
+        visibleResets: [],
+        showSubmit: false
+    },
+    songModeByGenreChecked: {
+        shownFieldSets: ['game-mode', 'song-mode'],
+        hiddenInputs: ['song-musician-select-span'],
+        visibleResets: ['song-musician-select'],
+        showSubmit: false
+    },
+    songModeByGenreSelected: {
+        shownFieldSets: ['game-mode', 'song-mode', 'additional-settings'],
+        hiddenInputs: ['song-musician-select-span'],
+        visibleResets: [],
+        showSubmit: true
+    },
+    songModeByMusicianChecked: {
+        shownFieldSets: ['game-mode', 'song-mode'],
+        hiddenInputs: ['song-genre-select-span'],
+        visibleResets: ['song-genre-select'],
+        showSubmit: false
+    },
+    songModeByMusicianSelected: {
+        shownFieldSets: ['game-mode', 'song-mode', 'additional-settings'],
+        hiddenInputs: ['song-genre-select-span'],
+        visibleResets: [],
+        showSubmit: true
+    },
+    songModeByAllChecked: {
+        shownFieldSets: ['game-mode', 'song-mode', 'additional-settings'],
+        hiddenInputs: ['song-genre-select-span', 'song-musician-select-span'],
+        visibleResets: ['song-musician-select', 'song-genre-select'],
+        showSubmit: true
+    },
+    musicianModeChecked: {
+        shownFieldSets: ['game-mode', 'musician-mode'],
+        hiddenInputs: ['musician-genre-select-span'],
+        visibleResets: [],
+        showSubmit: false
+    },
+    musicianModeByGenreChecked: {
+        shownFieldSets: ['game-mode', 'musician-mode'],
+        hiddenInputs: [],
+        visibleResets: [],
+        showSubmit: false
+    },
+    musicianModeByGenreSelected: {
+        shownFieldSets: ['game-mode', 'musician-mode', 'additional-settings'],
+        hiddenInputs: [],
+        visibleResets: [],
+        showSubmit: true
+    },
+    musicianModeByAllChecked: {
+        shownFieldSets: ['game-mode', 'musician-mode', 'additional-settings'],
+        hiddenInputs: ['musician-genre-select-span'],
+        visibleResets: ['musician-genre-select'],
+        showSubmit: true
+    },
 };
 
 function transitionTo(state) {
     setCurrentFormState(state);
 
-    // Start specific
-    if (state === 'start') {
-        songModeRadio.checked = songModeRadio.defaultChecked;
-        musicianModeRadio.checked = musicianModeRadio.defaultChecked;
-    }
-
     // Dynamically change number of available questions for provided settings
     recalculateQuestionNumber();
 
-    // Hide all fieldsets (and submit button)
-    document.querySelectorAll('#quiz-set-up-form fieldset').forEach(fs => fs.hidden = true);
-    document.querySelector('#quiz-set-up-submit').hidden = true;
+    // Show / Hide submit button
+    const submitButton = document.querySelector('#quiz-set-up-submit');
+    if (stateMap[state].showSubmit)
+        submitButton.classList.add('active');
+    else
+        submitButton.classList.remove('active');
 
-    // Show relevant ones
-    stateMap[state].forEach(id => {
-        document.getElementById(id).hidden = false;
+    // Show / Hide all fieldsets
+    const fieldSets = document.querySelectorAll('.quiz-form-fieldset');
+    fieldSets.forEach(fs => {
+        if (stateMap[state].shownFieldSets.includes(fs.id))
+            fs.classList.add('active');
+        else
+            fs.classList.remove('active');
+    });
+
+    // Show / Hide inputs in filesets
+    const inputSpans = document.querySelectorAll('.quiz-form-fieldset.active .input-label');
+    inputSpans.forEach(span => {
+        if (stateMap[state].hiddenInputs.includes(span.id))
+            span.classList.remove('active');
+        else
+            span.classList.add('active');
     });
 
     // Reset irrelevant parts
-    resetIrrelevantFieldsets(state);
+    resetFieldsetInputs(state);
 }
 
 function recalculateQuestionNumber() {
-    const inputElement = document.getElementById('question-number');
     const possibleQuestionNumber = getAllPossibleAnswers().length;
-    inputElement.max = possibleQuestionNumber > MAX_QUESTIONS ? MAX_QUESTIONS : possibleQuestionNumber;
-    inputElement.value = Math.floor((inputElement.min + inputElement.max) / 2);
-    inputElement.defaultValue = inputElement.value;
+    if (possibleQuestionNumber < 1) {
+        return;
+    }
+    questionNumberInput.max = possibleQuestionNumber > MAX_QUESTIONS ? MAX_QUESTIONS : possibleQuestionNumber;
+    questionNumberInput.value = Math.floor((questionNumberInput.min + questionNumberInput.max) / 2);
+    questionNumberInput.defaultValue = questionNumberInput.value;
 }
 
-function resetIrrelevantFieldsets(state) {
-    const visible = new Set(stateMap[state]);
-    document.querySelectorAll('#quiz-set-up-form fieldset').forEach(fs => {
-        if (!visible.has(fs.id)) {
-            Array.from(fs.elements).forEach(el => {
-                if (el.tagName === 'SELECT') {
-                    el.selectedIndex = 0;
-                } else if (el.type === 'radio' || el.type === 'checkbox') {
-                    el.checked = el.defaultChecked;
-                } else {
-                    el.value = el.defaultValue;
+function resetFieldsetInputs(state) {
+    const visibleFieldsets = new Set(stateMap[state].shownFieldSets);
+
+    const fss = document.querySelectorAll('.quiz-form-fieldset');
+    document.querySelectorAll('.quiz-form-fieldset').forEach(fs => {
+        const elements = fs.querySelectorAll('select, input');
+        elements.forEach(el => {
+            if (!visibleFieldsets.has(fs.id) || stateMap[state].visibleResets.includes(el.id)) {
+                switch (el.tagName) {
+                    case "SELECT": {
+                        el.selectedIndex = 0;
+                        break;
+                    }
+                    case "INPUT": {
+                        if (el.type === 'radio' || el.type === 'checkbox')
+                            el.checked = el.defaultChecked;
+                        else
+                            el.value = el.defaultValue;
+                        break;
+                    }
                 }
-            });
-        }
+            }
+        });
     });
 }

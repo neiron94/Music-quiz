@@ -1,0 +1,18 @@
+@import url("base.css");
+@import url("headerMainFooter.css");
+@import url("sections/common.css");
+@import url("sections/setup.css");
+@import url("sections/quiz.css");
+
+
+/*!* Responsive *!*/
+/*@media (max-width: 600px) {*/
+/*    nav ul {*/
+/*        flex-direction: column;*/
+/*    }*/
+
+/*    .quiz-header {*/
+/*        flex-direction: column;*/
+/*        gap: 1rem;*/
+/*    }*/
+/*}*/

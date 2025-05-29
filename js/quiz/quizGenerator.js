@@ -20,11 +20,7 @@ function generateQuiz() {
     const gameMode = formData.get('game-mode');
 
     const allAnswers = getAllPossibleAnswers();
-    console.log('HERE');
     const chosenAnswers = getRandomSample(allAnswers, formData.get('question-number'));
-
-    console.log(allAnswers);
-    console.log(chosenAnswers);
 
     const questions = []
 
@@ -55,8 +51,6 @@ function generateQuiz() {
     }
 
     setCurrentQuiz(new Quiz(questions, formData.get('replay-number')));
-    console.log(questions);
-    console.log(getCurrentQuiz());
 }
 
 function getAudioDir(gameMode, answerName) {

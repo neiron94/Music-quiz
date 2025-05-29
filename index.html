@@ -8,7 +8,7 @@
 </head>
 <body>
 <header>
-    <h1>🎵 Music Quiz</h1>
+    <h1>Music Quiz</h1>
     <nav>
         <ul>
             <li><a href="#" data-section="home-section">Home</a></li>
@@ -20,83 +20,106 @@
 </header>
 
 <main>
-    <section id="home-section"> HOME </section>
-    <section id="genres-section" hidden> GENRES </section>
-    <section id="musicians-section" hidden> MUSICIANS </section>
+    <section id="home-section" class="active"> HOME </section>
+    <section id="genres-section"> GENRES </section>
+    <section id="musicians-section"> MUSICIANS </section>
 
-    <section id="quiz-set-up-section" hidden>
+    <section id="quiz-set-up-section">
         <form id="quiz-set-up-form">
-            <fieldset id="game-mode">
+            <fieldset id="game-mode" class="quiz-form-fieldset active">
                 <legend>Game Mode</legend>
-                <input type="radio" id="guess-song" name="game-mode" value="song" required>
-                <label for="guess-song">Guess song</label>
-                <input type="radio" id="guess-musician" name="game-mode" value="musician" required>
-                <label for="guess-musician">Guess musician</label>
+
+                <span class="input-label active" id="guess-song-span">
+                    <input type="radio" id="guess-song" name="game-mode" value="song" required>
+                    <label for="guess-song">Guess song</label>
+                </span>
+
+                <span class="input-label active" id="guess-musician-span">
+                    <input type="radio" id="guess-musician" name="game-mode" value="musician" required>
+                    <label for="guess-musician">Guess musician</label>
+                </span>
             </fieldset>
 
-            <fieldset id="musician-mode" hidden>
+            <fieldset id="musician-mode" class="quiz-form-fieldset">
                 <legend>Musician mode settings</legend>
 
-                <input type="radio" id="musician-by-genre" name="musician-by" value="genre" required>
-                <label for="musician-by-genre">Guess by genre</label>
-                <input type="radio" id="musician-by-all" name="musician-by" value="all" required>
-                <label for="musician-by-all">Guess all musicians</label>
+                <div class="main-mode-options">
+                    <span class="input-label" id="musician-by-genre-span">
+                        <input type="radio" id="musician-by-genre" name="musician-by" value="genre" required>
+                        <label for="musician-by-genre">Guess by genre</label>
+                    </span>
 
-                <fieldset id="musician-mode-genre-choice" hidden>
-                    <legend>Choose genre</legend>
+                        <span class="input-label" id="musician-by-all-span">
+                        <input type="radio" id="musician-by-all" name="musician-by" value="all" required>
+                        <label for="musician-by-all">Guess all musicians</label>
+                    </span>
+                </div>
 
-                    <label for="musician-genre">Genre:</label>
-                    <select name="musician-genre" id="musician-genre" required></select>
-                </fieldset>
+                <span class="input-label" id="musician-genre-select-span">
+                    <label for="musician-genre-select">Genre:</label>
+                    <select name="musician-genre" id="musician-genre-select" required></select>
+                </span>
             </fieldset>
 
-            <fieldset id="song-mode" hidden>
+            <fieldset id="song-mode" class="quiz-form-fieldset">
                 <legend>Song mode settings</legend>
 
-                <input type="radio" id="song-by-genre" name="song-by" value="genre" required>
-                <label for="song-by-genre">Guess by genre</label>
-                <input type="radio" id="song-by-musician" name="song-by" value="musician" required>
-                <label for="song-by-musician">Guess by musician</label>
-                <input type="radio" id="song-by-all" name="song-by" value="all" required>
-                <label for="song-by-all">Guess all songs</label>
+                <div class="main-mode-options">
+                    <span class="input-label" id="song-by-genre-span">
+                        <input type="radio" id="song-by-genre" name="song-by" value="genre" required>
+                        <label for="song-by-genre">Guess by genre</label>
+                    </span>
 
-                <fieldset id="song-mode-genre-choice" hidden>
-                    <legend>Choose genre</legend>
+                        <span class="input-label" id="song-by-musician-span">
+                        <input type="radio" id="song-by-musician" name="song-by" value="musician" required>
+                        <label for="song-by-musician">Guess by musician</label>
+                    </span>
 
-                    <label for="song-genre">Genre:</label>
-                    <select name="song-genre" id="song-genre" required></select>
-                </fieldset>
+                        <span class="input-label" id="song-by-all-span">
+                        <input type="radio" id="song-by-all" name="song-by" value="all" required>
+                        <label for="song-by-all">Guess all songs</label>
+                    </span>
+                </div>
 
-                <fieldset id="song-mode-musician-choice" hidden>
-                    <legend>Choose musician</legend>
+                <span class="input-label" id="song-genre-select-span">
+                    <label for="song-genre-select">Genre:</label>
+                    <select name="song-genre" id="song-genre-select" required></select>
+                </span>
 
-                    <label for="song-musician">Musician:</label>
-                    <select name="song-musician" id="song-musician" required></select>
-                </fieldset>
+                <span class="input-label" id="song-musician-select-span">
+                    <label for="song-musician-select">Musician:</label>
+                    <select name="song-musician" id="song-musician-select" required></select>
+                </span>
             </fieldset>
 
-            <fieldset id="additional-settings" hidden>
+            <fieldset id="additional-settings" class="quiz-form-fieldset">
                 <legend>Additional setting</legend>
 
-                <label for="listen-duration">Listen duration:</label>
-                <select id="listen-duration" name="listen-duration" required>
-                    <option value="easy">easy</option>
-                    <option value="normal">normal</option>
-                    <option value="hard">hard</option>
-                </select>
+                <span class="input-label" id="listen-duration-span">
+                    <label for="listen-duration">Listen duration:</label>
+                    <select id="listen-duration" name="listen-duration" required>
+                        <option value="easy">easy</option>
+                        <option value="normal">normal</option>
+                        <option value="hard">hard</option>
+                    </select>
+                </span>
 
-                <label for="question-number">Number of questions:</label>
-                <input type="range" id="question-number" name="question-number" min="1" max="5" step="1" />
+                <span class="input-label" id="question-number-span">
+                    <label for="question-number">Question number:</label>
+                    <input type="range" id="question-number" name="question-number" min="1" max="5" step="1" />
+                </span>
 
-                <label for="replay-number">Number of replays:</label>
-                <input type="range" id="replay-number" name="replay-number" min="1" max="5" step="1" />
+                <span class="input-label" id="replay-number-span">
+                    <label for="replay-number">Replay number:</label>
+                    <input type="range" id="replay-number" name="replay-number" min="1" max="5" step="1" />
+                </span>
             </fieldset>
 
             <button id="quiz-set-up-submit" type="submit" hidden>Play</button>
         </form>
     </section>
 
-    <section id="quiz-section" hidden>
+    <section id="quiz-section">
         <div class="quiz-header">
             <div class="question-info">
                 <span id="question-counter">Question: 1 / 10</span>
@@ -121,7 +144,7 @@
         </div>
     </section>
 
-    <section id="results-section" hidden>
+    <section id="results-section">
         <h2>Quiz Finished</h2>
         <p id="results-text">Statistic</p>
     </section>

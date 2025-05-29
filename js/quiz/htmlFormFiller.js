@@ -1,8 +1,8 @@
 import { genres, musicians } from '../global.js';
 
-const musicianGenreSelect = document.getElementById('musician-genre');
-const songGenreSelect = document.getElementById('song-genre');
-const songMusicianSelect = document.getElementById('song-musician');
+const musicianGenreSelect = document.getElementById('musician-genre-select');
+const songGenreSelect = document.getElementById('song-genre-select');
+const songMusicianSelect = document.getElementById('song-musician-select');
 
 export function fillSetUpFormHtml() {
     addAllGenres(musicianGenreSelect);

@@ -1,8 +1,8 @@
 import { genres, musicians, songs, getCurrentFormState } from '../global.js';
 
-const musicianModeGenreSelect = document.getElementById('musician-genre');
-const songModeGenreSelect = document.getElementById('song-genre');
-const songModeMusicianSelect = document.getElementById('song-musician');
+const musicianModeGenreSelect = document.getElementById('musician-genre-select');
+const songModeGenreSelect = document.getElementById('song-genre-select');
+const songModeMusicianSelect = document.getElementById('song-musician-select');
 
 export function getAllPossibleAnswers() {
     switch (getCurrentFormState()) {

@@ -38,6 +38,9 @@ function setUpQuizShowHide() {
 
 export function showSection(id) {
     sections.forEach(section => {
-        section.hidden = section.id !== id;
+        section.classList.remove('active');
+        if (section.id === id) {
+            section.classList.add('active');
+        }
     });
 }
