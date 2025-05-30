@@ -4,6 +4,20 @@ const musicianGenreSelect = document.getElementById('musician-genre-select');
 const songGenreSelect = document.getElementById('song-genre-select');
 const songMusicianSelect = document.getElementById('song-musician-select');
 
+const questionNumberSlideBar = document.getElementById('question-number');
+const questionNumberCurrent = document.querySelector('#question-number-span .slide-bar-current');
+
+const replayNumberSlideBar = document.getElementById('replay-number');
+const replayNumberCurrent = document.querySelector('#replay-number-span .slide-bar-current');
+
+questionNumberSlideBar.addEventListener('input', () => {
+    questionNumberCurrent.textContent = questionNumberSlideBar.value;
+});
+
+replayNumberSlideBar.addEventListener('input', () => {
+    replayNumberCurrent.textContent = replayNumberSlideBar.value;
+});
+
 export function fillSetUpFormHtml() {
     addAllGenres(musicianGenreSelect);
     addAllGenres(songGenreSelect);

@@ -34,7 +34,10 @@ const musicianByGenreRadio = document.getElementById('musician-by-genre');
 const musicianByGenreSelect = document.getElementById('musician-genre-select');
 const allMusiciansRadio = document.getElementById('musician-by-all');
 
-const questionNumberInput = document.getElementById('question-number');
+const questionNumberSlideBar = document.getElementById('question-number');
+const questionNumberCurrent = document.querySelector('#question-number-span .slide-bar-current');
+const questionNumberMax = document.querySelector('#question-number-span .slide-bar-max');
+
 
 
 const stateMap = {
@@ -146,9 +149,15 @@ function recalculateQuestionNumber() {
     if (possibleQuestionNumber < 1) {
         return;
     }
-    questionNumberInput.max = possibleQuestionNumber > MAX_QUESTIONS ? MAX_QUESTIONS : possibleQuestionNumber;
-    questionNumberInput.value = Math.floor((questionNumberInput.min + questionNumberInput.max) / 2);
-    questionNumberInput.defaultValue = questionNumberInput.value;
+
+    // Change on slide bar
+    questionNumberSlideBar.max = possibleQuestionNumber > MAX_QUESTIONS ? MAX_QUESTIONS : possibleQuestionNumber;
+    questionNumberSlideBar.value = Math.floor((questionNumberSlideBar.min + questionNumberSlideBar.max) / 2);
+    questionNumberSlideBar.defaultValue = questionNumberSlideBar.value;
+
+    // Change on visualized slide bar values
+    questionNumberCurrent.textContent = questionNumberSlideBar.value.toString();
+    questionNumberMax.textContent = questionNumberSlideBar.max.toString();
 }
 
 function resetFieldsetInputs(state) {
@@ -167,6 +176,10 @@ function resetFieldsetInputs(state) {
                     case "INPUT": {
                         if (el.type === 'radio' || el.type === 'checkbox')
                             el.checked = el.defaultChecked;
+                        else if (el.type === 'range') {
+                            el.value = el.defaultValue;
+                            el.dispatchEvent(new Event('input'));
+                        }
                         else
                             el.value = el.defaultValue;
                         break;

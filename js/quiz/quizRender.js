@@ -160,7 +160,4 @@ function handleAnswer(selectedIndex) {
             showSection('results-section');
         }
     }, 4000);
-
-
-
 }

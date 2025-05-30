@@ -56,7 +56,7 @@
                 </div>
 
                 <span class="input-label" id="musician-genre-select-span">
-                    <label for="musician-genre-select">Genre:</label>
+                    <label for="musician-genre-select" class="select-label">Genre:</label>
                     <select name="musician-genre" id="musician-genre-select" required></select>
                 </span>
             </fieldset>
@@ -82,12 +82,12 @@
                 </div>
 
                 <span class="input-label" id="song-genre-select-span">
-                    <label for="song-genre-select">Genre:</label>
+                    <label for="song-genre-select" class="select-label">Genre:</label>
                     <select name="song-genre" id="song-genre-select" required></select>
                 </span>
 
                 <span class="input-label" id="song-musician-select-span">
-                    <label for="song-musician-select">Musician:</label>
+                    <label for="song-musician-select" class="select-label">Musician:</label>
                     <select name="song-musician" id="song-musician-select" required></select>
                 </span>
             </fieldset>
@@ -98,20 +98,34 @@
                 <span class="input-label" id="listen-duration-span">
                     <label for="listen-duration">Listen duration:</label>
                     <select id="listen-duration" name="listen-duration" required>
-                        <option value="easy">easy</option>
-                        <option value="normal">normal</option>
-                        <option value="hard">hard</option>
+                        <option value="easy">Long</option>
+                        <option value="normal">Normal</option>
+                        <option value="hard">Short</option>
                     </select>
                 </span>
 
                 <span class="input-label" id="question-number-span">
                     <label for="question-number">Question number:</label>
-                    <input type="range" id="question-number" name="question-number" min="1" max="5" step="1" />
+                    <span class="slide-bar">
+                        <input type="range" id="question-number" name="question-number" min="1" max="5" step="1" />
+                        <span class="slide-bar-values">
+                            <span class="slide-bar-min">1</span>
+                            <span class="slide-bar-current">current value</span>
+                            <span class="slide-bar-max">5</span>
+                        </span>
+                    </span>
                 </span>
 
                 <span class="input-label" id="replay-number-span">
                     <label for="replay-number">Replay number:</label>
-                    <input type="range" id="replay-number" name="replay-number" min="1" max="5" step="1" />
+                    <span class="slide-bar">
+                        <input type="range" id="replay-number" name="replay-number" min="1" max="5" step="1" />
+                        <span class="slide-bar-values">
+                            <span class="slide-bar-min">1</span>
+                            <span class="slide-bar-current">current value</span>
+                            <span class="slide-bar-max">5</span>
+                        </span>
+                    </span>
                 </span>
             </fieldset>
 
