@@ -7,7 +7,7 @@
       {
         "name": "Metallica",
         "description": "",
-        "image": "",
+        "image": "static/img/musicians/metallica.jpg",
         "songs": [
           {
             "name": "For Whom The Bell Tolls",

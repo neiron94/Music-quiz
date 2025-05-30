@@ -120,28 +120,33 @@
     </section>
 
     <section id="quiz-section">
-        <div class="quiz-header">
-            <div class="question-info">
-                <span id="question-counter">Question: 1 / 10</span>
-                <span id="correct-counter">Correct: 0</span>
-            </div>
-            <div class="replay-info">
-                <button id="replay-button" aria-label="Replay song">🔁 Replay</button>
-                <span id="replay-counter">Replays: 0 / 3</span>
-            </div>
-        </div>
+        <span id="question-counter">Question: 1 / 10</span>
 
-        <figure class="quiz-image">
-            <img id="quiz-image" src="static/img/placeholder.svg" alt="Musician or Album Cover" />
-            <figcaption id="image-caption"></figcaption>
-        </figure>
+        <span id="correct-counter">Correct: 0</span>
 
-        <div class="quiz-answers">
+        <img id="quiz-image" width="200px" height="200px" src="static/img/svg/question.svg" data-swap-src="static/img/svg/placeholder.svg" alt="Musician or Album Cover" />
+
+        <svg id="replay-button" class="active" width="50px" height="50px" viewBox="0 0 24 24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <style>.cls-1{fill:green;stroke:#020202;stroke-miterlimit:10;stroke-width:1.91px;}</style>
+            </defs>
+            <circle class="cls-1" cx="12" cy="12" r="10.5"/>
+            <polyline class="cls-1" points="12.96 4.36 15.82 7.23 12.96 10.09"/>
+            <polyline class="cls-1" points="12.96 4.36 15.82 7.23 12.96 10.09"/>
+            <polyline class="cls-1" points="11.04 13.91 8.18 16.77 11.04 19.64"/>
+            <path class="cls-1" d="M17.73,11.05h0A5.73,5.73,0,0,1,12,16.77H8.18"/>
+            <path class="cls-1" d="M17.73,11.05h0A5.73,5.73,0,0,1,12,16.77H8.18"/>
+            <path class="cls-1" d="M6.27,13h0A5.73,5.73,0,0,1,12,7.23h3.82"/>
+        </svg>
+
+        <span id="replay-counter">Replays: 0 / 3</span>
+
+        <span class="quiz-answers">
             <button class="answer-button" data-index="0">Answer 1</button>
             <button class="answer-button" data-index="1">Answer 2</button>
             <button class="answer-button" data-index="2">Answer 3</button>
             <button class="answer-button" data-index="3">Answer 4</button>
-        </div>
+        </span>
     </section>
 
     <section id="results-section">

@@ -10,3 +10,9 @@ export function getRandomSample(arr, n) {
 export function getRandomElement(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
+
+// TODO - rewrite to:
+// Array.prototype.random = function() {
+//     let index = Math.random()*this.length
+//     return this[Math.floor(index)]
+// }

@@ -10,6 +10,10 @@ export class Quiz {
         this.currentQuestionIndex = 0;
         this.correctAnswersCount = 0;
     }
+
+    getCurrentQuestion() {
+        return this.questions[this.currentQuestionIndex];
+    }
 }
 
 export class QuizQuestion {

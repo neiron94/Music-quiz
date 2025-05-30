@@ -60,6 +60,10 @@
     column-gap: 0.3rem;
 }
 
+input:checked + label {
+    font-weight: bold;
+}
+
 /* Submit button */
 #quiz-set-up-submit {
     display: none;
@@ -71,10 +75,11 @@
     padding: 0.5rem 1rem;
     background-color: #333;
     color: white;
-    border: none;
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
+    border: none;
+    transition: all 0.3s;
 }
 
 #quiz-set-up-submit:hover {
