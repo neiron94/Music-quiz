@@ -61,7 +61,8 @@ function getAudioDir(gameMode, answerName) {
         }
         case 'musician': {
             const answerMusician = musicians.find(m => m.name === answerName);
-            return songs.find(s => s.name === getRandomElement(answerMusician.songs)).audioDir;
+            const randomMusicianSong = getRandomElement(answerMusician.songs);
+            return songs.find(s => s.name === randomMusicianSong).audioDir;
         }
         default: {
             console.error(`Invalid game mode: ${gameMode}`)
@@ -76,7 +77,7 @@ function getImage(gameMode, answerName) {
             return songs.find(s => s.name === answerName).image;
         }
         case 'musician': {
-            return musicians.find(m => m.name === answerName).image;
+            return musicians.find(m => m.name === answerName).imageMirror;
         }
         default: {
             console.error(`Invalid game mode: ${gameMode}`)

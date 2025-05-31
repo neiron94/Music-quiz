@@ -1,5 +1,6 @@
 export const genres = []
 export const musicians = []
+export const albums = []
 export const songs = []
 
 let currentFormState;
