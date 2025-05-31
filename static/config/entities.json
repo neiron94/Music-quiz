@@ -1,6 +1,6 @@
 [
   {
-    "name": "Rock",
+    "name": "Classic Rock",
     "description": "",
     "image": "",
     "musicians": [
@@ -44,6 +44,293 @@
               {
                 "name": "Nothing Else Matters",
                 "audioDir": "static/audio/rock/metallica/nothing"
+              },
+              {
+                "name": "Wherever I May Roam",
+                "audioDir": "static/audio/rock/metallica/roam"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "AC/DC",
+        "description": "",
+        "image": "static/img/genres/rock/musicians/acdc/musician.jpg",
+        "albums": [
+          {
+            "name": "Back in Black",
+            "image": "static/img/genres/rock/musicians/acdc/back.png",
+            "songs": [
+              {
+                "name": "Back in Black",
+                "audioDir": "static/audio/rock/acdc/back"
+              },
+              {
+                "name": "Hells Bells",
+                "audioDir": "static/audio/rock/acdc/bells"
+              }
+            ]
+          },
+          {
+            "name": "Highway to Hell",
+            "image": "static/img/genres/rock/musicians/acdc/highway.jpg",
+            "songs": [
+              {
+                "name": "Highway to Hell",
+                "audioDir": "static/audio/rock/acdc/highway"
+              }
+            ]
+          },
+          {
+            "name": "The Razors Edge",
+            "image": "static/img/genres/rock/musicians/acdc/razor.jpg",
+            "songs": [
+              {
+                "name": "Thunderstruck",
+                "audioDir": "static/audio/rock/acdc/thunder"
+              }
+            ]
+          },
+          {
+            "name": "High Voltage",
+            "image": "static/img/genres/rock/musicians/acdc/voltage.jpg",
+            "songs": [
+              {
+                "name": "T.N.T.",
+                "audioDir": "static/audio/rock/acdc/tnt"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Punk Rock",
+    "description": "",
+    "image": "",
+    "musicians": [
+      {
+        "name": "Король и Шут",
+        "description": "",
+        "image": "static/img/genres/punk/musicians/shut/musician.jpg",
+        "albums": [
+          {
+            "name": "Тень Клоуна",
+            "image": "static/img/genres/punk/musicians/shut/shadow.jpg",
+            "songs": [
+              {
+                "name": "Дагон",
+                "audioDir": "static/audio/punk/shut/dagon"
+              }
+            ]
+          },
+          {
+            "name": "Продавец Кошмаров",
+            "image": "static/img/genres/punk/musicians/shut/seller.jpg",
+            "songs": [
+              {
+                "name": "Джокер",
+                "audioDir": "static/audio/punk/shut/joker"
+              },
+              {
+                "name": "Город Мертвецов",
+                "audioDir": "static/audio/punk/shut/town"
+              }
+            ]
+          },
+          {
+            "name": "Акустический Альбом",
+            "image": "static/img/genres/punk/musicians/shut/acoustic.jpg",
+            "songs": [
+              {
+                "name": "Ели Мясо Мужики",
+                "audioDir": "static/audio/punk/shut/meat"
+              },
+              {
+                "name": "Кукла Колдуна",
+                "audioDir": "static/audio/punk/shut/kukla"
+              }
+            ]
+          },
+          {
+            "name": "Король и Шут",
+            "image": "static/img/genres/punk/musicians/shut/shut.jpg",
+            "songs": [
+              {
+                "name": "Лесник",
+                "audioDir": "static/audio/punk/shut/lesnik"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Grunge",
+    "description": "",
+    "image": "",
+    "musicians": [
+      {
+        "name": "Nirvana",
+        "description": "",
+        "image": "static/img/genres/grunge/musicians/nirvana/musician.png",
+        "albums": [
+          {
+            "name": "Bleach",
+            "image": "static/img/genres/grunge/musicians/nirvana/bleach.jpg",
+            "songs": [
+              {
+                "name": "About A Girl",
+                "audioDir": "static/audio/grunge/nirvana/girl"
+              }
+            ]
+          },
+          {
+            "name": "Nevermind",
+            "image": "static/img/genres/grunge/musicians/nirvana/nevermind.jpg",
+            "songs": [
+              {
+                "name": "Lithium",
+                "audioDir": "static/audio/grunge/nirvana/lithium"
+              },
+              {
+                "name": "Polly",
+                "audioDir": "static/audio/grunge/nirvana/polly"
+              },
+              {
+                "name": "Smells Like Teen Spirit",
+                "audioDir": "static/audio/grunge/nirvana/spirit"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Legend",
+    "description": "",
+    "image": "",
+    "musicians": [
+      {
+        "name": "Queen",
+        "description": "",
+        "image": "static/img/genres/legend/musicians/queen/musician.png",
+        "albums": [
+          {
+            "name": "News of the World",
+            "image": "static/img/genres/legend/musicians/queen/news.png",
+            "songs": [
+              {
+                "name": "We Are the Champions",
+                "audioDir": "static/audio/legend/queen/champions"
+              }
+            ]
+          },
+          {
+            "name": "The Game",
+            "image": "static/img/genres/legend/musicians/queen/game.png",
+            "songs": [
+              {
+                "name": "Another One Bites the Dust",
+                "audioDir": "static/audio/legend/queen/dust"
+              }
+            ]
+          },
+          {
+            "name": "The Works",
+            "image": "static/img/genres/legend/musicians/queen/works.png",
+            "songs": [
+              {
+                "name": "I Want to Break Free",
+                "audioDir": "static/audio/legend/queen/free"
+              }
+            ]
+          },
+          {
+            "name": "Innuendo",
+            "image": "static/img/genres/legend/musicians/queen/innuendo.png",
+            "songs": [
+              {
+                "name": "The Show Must Go On",
+                "audioDir": "static/audio/legend/queen/show"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "The Beatles",
+        "description": "",
+        "image": "static/img/genres/legend/musicians/beatles/musician.jpg",
+        "albums": [
+          {
+            "name": "A Hard Day's Night",
+            "image": "static/img/genres/legend/musicians/beatles/night.jpg",
+            "songs": [
+              {
+                "name": "A Hard Day's Night",
+                "audioDir": "static/audio/legend/beatles/night"
+              }
+            ]
+          },
+          {
+            "name": "Yellow Submarine",
+            "image": "static/img/genres/legend/musicians/beatles/submarine.jpg",
+            "songs": [
+              {
+                "name": "Yellow Submarine",
+                "audioDir": "static/audio/legend/beatles/submarine"
+              }
+            ]
+          },
+          {
+            "name": "Help!",
+            "image": "static/img/genres/legend/musicians/beatles/help.png",
+            "songs": [
+              {
+                "name": "Yesterday",
+                "audioDir": "static/audio/legend/beatles/yesterday"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "The Rolling Stones",
+        "description": "",
+        "image": "static/img/genres/legend/musicians/stones/musician.jpg",
+        "albums": [
+          {
+            "name": "Let It Bleed",
+            "image": "static/img/genres/legend/musicians/stones/bleed.jpg",
+            "songs": [
+              {
+                "name": "Gimme Shelter",
+                "audioDir": "static/audio/legend/stones/gimme"
+              }
+            ]
+          },
+          {
+            "name": "Aftermath",
+            "image": "static/img/genres/legend/musicians/stones/aftermath.jpg",
+            "songs": [
+              {
+                "name": "Paint It Black",
+                "audioDir": "static/audio/legend/stones/paint"
+              }
+            ]
+          },
+          {
+            "name": "Out of Our Heads",
+            "image": "static/img/genres/legend/musicians/stones/heads.jpg",
+            "songs": [
+              {
+                "name": "Satisfaction",
+                "audioDir": "static/audio/legend/stones/satisfaction"
               }
             ]
           }
