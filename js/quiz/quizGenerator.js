@@ -1,4 +1,4 @@
-import { musicians, songs, setCurrentQuiz, getCurrentQuiz } from '../global.js';
+import { musicians, songs, albums, setCurrentQuiz } from '../global.js';
 import { getAllPossibleAnswers } from './answerProvider.js';
 import { Quiz, QuizQuestion } from '../model/quiz.js';
 import { getRandomSample, getRandomElement } from '../utils.js';
@@ -74,10 +74,10 @@ function getAudioDir(gameMode, answerName) {
 function getImage(gameMode, answerName) {
     switch (gameMode) {
         case 'song': {
-            return songs.find(s => s.name === answerName).image;
+            return albums.find(a => a.songs.includes(answerName)).image;
         }
         case 'musician': {
-            return musicians.find(m => m.name === answerName).imageMirror;
+            return musicians.find(m => m.name === answerName).image;
         }
         default: {
             console.error(`Invalid game mode: ${gameMode}`)

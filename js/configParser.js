@@ -36,15 +36,15 @@ function parseEntities(entities) {
                     musicianSongNames.push(rawSong.name);
                     albumSongNames.push(rawSong.name);
 
-                    const song = new Song(rawSong.name, `${rawAlbum.imageDir}/mirror.jpg`, rawSong.audioDir);
+                    const song = new Song(rawSong.name, rawSong.audioDir);
                     songs.push(song);
                 }
 
-                const album = new Album(rawAlbum.name, `${rawAlbum.imageDir}/origin.jpg`, albumSongNames);
+                const album = new Album(rawAlbum.name, rawAlbum.image, albumSongNames);
                 albums.push(album);
             }
 
-            const musician = new Musician(rawMusician.name, rawMusician.description, `${rawMusician.imageDir}/origin.jpg`, `${rawMusician.imageDir}/mirror.jpg`, albumNames, musicianSongNames);
+            const musician = new Musician(rawMusician.name, rawMusician.description, rawMusician.image, albumNames, musicianSongNames);
             musicians.push(musician);
         }
 

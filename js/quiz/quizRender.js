@@ -189,9 +189,15 @@ function handleAnswer(selectedIndex) {
     replayButton.classList.add('disable');
 
     // Flip image
-    quizImage.style.transition = 'transform 2s linear';
-    quizImage.style.transform = 'rotateY(180deg)';
+    quizImage.style.transition = 'transform 1s linear';
+    quizImage.style.transform = 'rotateY(90deg)';
     setTimeout(() => {
         [quizImage.src, quizImage.dataset.swapSrc] = [quizImage.dataset.swapSrc, quizImage.src];
-    }, 1000); // half of 2s (transition duration)
+        quizImage.style.transition = '';
+        quizImage.style.transform = 'rotateY(270deg)';
+        setTimeout(() => {
+            quizImage.style.transition = 'transform 1s linear';
+            quizImage.style.transform = 'rotateY(360deg)';
+        }, 0);
+    }, 1000);
 }

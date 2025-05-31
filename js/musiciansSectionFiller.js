@@ -1,4 +1,4 @@
-import { musicians } from './global.js';
+import { musicians, albums } from './global.js';
 
 const musiciansList = document.getElementById('musicians-list');
 
@@ -24,7 +24,19 @@ export function fillMusiciansSection() {
         albumsText.textContent = 'Discography presented in the quiz:';
         albumsDiv.appendChild(albumsText);
         const albumList = document.createElement('ul');
-        // TODO - for each file from musician.albumImagesDir
+        albums.filter(album => musician.albums.includes(album.name)).forEach(album => {
+            const li = document.createElement('li');
+            const albumSpan = document.createElement('span');
+            const albumName = document.createElement('span');
+            albumName.textContent = album.name;
+            albumSpan.appendChild(albumName);
+
+            const albumImage = document.createElement('img');
+            albumImage.src = album.image;
+            albumSpan.appendChild(albumImage);
+            li.appendChild(albumSpan);
+            albumList.appendChild(li);
+        });
         albumsDiv.appendChild(albumList);
         article.appendChild(albumsDiv);
 

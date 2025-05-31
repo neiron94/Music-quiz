@@ -7,11 +7,11 @@
       {
         "name": "Metallica",
         "description": "",
-        "imageDir": "static/img/genres/rock/musicians/metallica",
+        "image": "static/img/genres/rock/musicians/metallica/musician.jpg",
         "albums": [
           {
             "name": "Ride the Lightning",
-            "imageDir": "static/img/genres/rock/musicians/metallica/lightning",
+            "image": "static/img/genres/rock/musicians/metallica/lightning.jpg",
             "songs": [
               {
                 "name": "For Whom The Bell Tolls",
@@ -21,7 +21,7 @@
           },
           {
             "name": "Master of Puppets",
-            "imageDir": "static/img/genres/rock/musicians/metallica/puppet",
+            "image": "static/img/genres/rock/musicians/metallica/puppet.jpg",
             "songs": [
               {
                 "name": "Master Of Puppets",
@@ -31,7 +31,7 @@
           },
           {
             "name": "Metallica",
-            "imageDir": "static/img/genres/rock/musicians/metallica/sandman",
+            "image": "static/img/genres/rock/musicians/metallica/sandman.jpg",
             "songs": [
               {
                 "name": "The Unforgiven",
