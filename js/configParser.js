@@ -32,7 +32,7 @@ function parseEntities(entities) {
                 songs.push(song);
             }
 
-            const musician = new Musician(rawMusician.name, rawMusician.description, rawMusician.image, songNames);
+            const musician = new Musician(rawMusician.name, rawMusician.description, rawMusician.image, rawMusician.imageMirror, songNames);
             musicians.push(musician);
         }
 

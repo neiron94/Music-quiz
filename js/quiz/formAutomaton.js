@@ -152,7 +152,7 @@ function recalculateQuestionNumber() {
 
     // Change on slide bar
     questionNumberSlideBar.max = possibleQuestionNumber > MAX_QUESTIONS ? MAX_QUESTIONS : possibleQuestionNumber;
-    questionNumberSlideBar.value = Math.floor((questionNumberSlideBar.min + questionNumberSlideBar.max) / 2);
+    questionNumberSlideBar.value = Math.floor((parseInt(questionNumberSlideBar.min) + parseInt(questionNumberSlideBar.max)) / 2);
     questionNumberSlideBar.defaultValue = questionNumberSlideBar.value;
 
     // Change on visualized slide bar values

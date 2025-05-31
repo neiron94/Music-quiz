@@ -29,12 +29,13 @@ function generateQuiz() {
         const audioDir = getAudioDir(gameMode, answerName);
         const filename = formData.get('listen-duration');
         const audio = `${audioDir}/${filename}.mp3`;
+        const fullAudio = `${audioDir}/full.mp3`;
 
         // Image
         const image = getImage(gameMode, answerName);
 
         // Options
-        let otherPossibleAnswers = allAnswers.filter(a => a.name !== answerName);
+        let otherPossibleAnswers = allAnswers.filter(a => a !== answerName);
         if (otherPossibleAnswers.length < 3) {
             otherPossibleAnswers = getOtherAnswers(gameMode, answerName);
         }
@@ -46,7 +47,7 @@ function generateQuiz() {
         const correctOptionIndex = options.indexOf(answerName);
 
         // Create question
-        const question = new QuizQuestion(audio, image, options, correctOptionIndex);
+        const question = new QuizQuestion(audio, fullAudio, image, options, correctOptionIndex);
         questions.push(question);
     }
 

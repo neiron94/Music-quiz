@@ -18,13 +18,15 @@ export class Quiz {
 
 export class QuizQuestion {
     audio
+    fullAudio
     image
     options
     correctOptionIndex
     replays
 
-    constructor(audio, image, options, correctOptionIndex) {
+    constructor(audio, fullAudio, image, options, correctOptionIndex) {
         this.audio = audio;
+        this.fullAudio = fullAudio;
         this.image = image;
         this.options = options;
         this.correctOptionIndex = correctOptionIndex;

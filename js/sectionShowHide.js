@@ -1,3 +1,5 @@
+import {resetAnsweredQuiz} from "./quiz/quizRender.js";
+
 const links = document.querySelectorAll('nav a');
 const submitButton = document.getElementById('quiz-set-up-submit');
 const sections = document.querySelectorAll('main > section');
@@ -13,6 +15,7 @@ function setUpNavigation() {
             e.preventDefault();
             const sectionId = link.dataset.section;
             showSection(sectionId);
+            resetAnsweredQuiz();
 
             // history.pushState(null, '', `#${sectionId}`);
         });
@@ -33,6 +36,7 @@ function setUpQuizShowHide() {
     submitButton.addEventListener('click', (e) => {
         e.preventDefault();
         showSection('quiz-section');
+        resetAnsweredQuiz();
     })
 }
 
