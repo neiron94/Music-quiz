@@ -108,7 +108,7 @@ function renderQuizUI() {
 
     // Set image
     quizImage.src = "static/img/svg/question.svg";
-    quizImage.dataset.swapSrc = question.imageMirror || "static/img/svg/placeholder.svg";
+    quizImage.dataset.swapSrc = question.image || "static/img/svg/placeholder.svg";
 
     // Render counters
     renderQuestionCounter();

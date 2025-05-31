@@ -1,5 +1,5 @@
 /* Header and Navigation */
-header {
+body > header {
     background-color: #333;
     color: white;
     padding: 1rem;

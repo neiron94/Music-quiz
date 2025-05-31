@@ -7,32 +7,33 @@
       {
         "name": "Metallica",
         "description": "",
-        "image": "static/img/musicians/metallica.jpg",
-        "imageMirror": "static/img/musicians/metallica-mirror.jpg",
+        "image": "static/img/genres/rock/musicians/metallica/origin/metallica.jpg",
+        "imageMirror": "static/img/genres/rock/musicians/metallica/mirror/metallica.jpg",
+        "albumImagesDir": "static/img/genres/rock/musicians/metallica/origin/albums",
         "songs": [
           {
             "name": "For Whom The Bell Tolls",
-            "image": "static/img/albums/lightning.jpg",
+            "image": "static/img/genres/rock/musicians/metallica/mirror/albums/lightning.jpg",
             "audioDir": "static/audio/rock/metallica/bell"
           },
           {
             "name": "Master Of Puppets",
-            "image": "static/img/albums/puppet.jpg",
+            "image": "static/img/genres/rock/musicians/metallica/mirror/albums/puppet.jpg",
             "audioDir": "static/audio/rock/metallica/puppet"
           },
           {
             "name": "The Unforgiven",
-            "image": "static/img/albums/sandman.jpg",
+            "image": "static/img/genres/rock/musicians/metallica/mirror/albums/sandman.jpg",
             "audioDir": "static/audio/rock/metallica/unforgiven"
           },
           {
             "name": "Enter Sandman",
-            "image": "static/img/albums/sandman.jpg",
+            "image": "static/img/genres/rock/musicians/metallica/mirror/albums/sandman.jpg",
             "audioDir": "static/audio/rock/metallica/sandman"
           },
           {
             "name": "Nothing Else Matters",
-            "image": "static/img/albums/sandman.jpg",
+            "image": "static/img/genres/rock/musicians/metallica/mirror/albums/sandman.jpg",
             "audioDir": "static/audio/rock/metallica/nothing"
           }
         ]

@@ -8,11 +8,12 @@ export class Genre {
 }
 
 export class Musician {
-    constructor(name, description, image, imageMirror, songs) {
+    constructor(name, description, image, imageMirror, albumImagesDir, songs) {
         this.name = name;
         this.description = description;
         this.image = image;
         this.imageMirror = imageMirror;
+        this.albumImagesDir = albumImagesDir;
         this.songs = songs;
     }
 }
