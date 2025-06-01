@@ -11,7 +11,8 @@ ul {
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f7f7f7;
+    /*background: #f7f7f7;*/
+    background: #c5c3c3;
     color: #333;
     line-height: 1.6;
     display: flex;
