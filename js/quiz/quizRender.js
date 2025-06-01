@@ -1,9 +1,5 @@
-import { getCurrentQuiz } from '../global.js';
+import {getCurrentQuiz, setCurrentQuiz} from '../global.js';
 import {showQuizSectionArticle} from '../sectionShowHide.js';
-
-export function startQuizRender() {
-    renderQuizUI();
-}
 
 const quizImage = document.getElementById("quiz-image");
 const replayButton = document.getElementById("replay-button");
@@ -45,16 +41,20 @@ nextQuestionButton.addEventListener("click", () => {
 
     // Next question
     const quiz = getCurrentQuiz();
-    quiz.currentQuestionIndex++;
-
     if (quiz.currentQuestionIndex < quiz.questions.length) {
         renderQuizUI();
     } else {
-        resultsText.textContent = `You answered ${getCurrentQuiz().correctAnswersCount} out of ${getCurrentQuiz().questions.length} correctly.`;
+        renderResultsText();
         quiz.finished = true;
+        setCurrentQuiz(quiz);
         showQuizSectionArticle();
     }
 });
+
+export function renderResultsText() {
+    const quiz = getCurrentQuiz();
+    resultsText.textContent = `You answered ${quiz.correctAnswersCount} out of ${quiz.questions.length} correctly.`;
+}
 
 export function resetAnsweredQuiz() {
     // Hide next question button
@@ -90,6 +90,7 @@ function playAudio() {
     audio.addEventListener('ended', () => {
         replayButton.classList.remove('animate');
         question.replays++;
+        setCurrentQuiz(quiz);
         if (question.replays === parseInt(quiz.maxReplays))
             replayButton.classList.remove('active');
         renderReplayCounter();
@@ -97,15 +98,13 @@ function playAudio() {
     });
 }
 
-function renderQuizUI() {
+export function renderQuizUI() {
     const quiz = getCurrentQuiz();
     const question = quiz.getCurrentQuestion();
 
     // Activate replay button
     if (question.replays < quiz.maxReplays)
         replayButton.classList.add('active');
-
-    showQuizSectionArticle();
 
     // Set image
     quizImage.src = "static/img/svg/question.svg";
@@ -161,6 +160,7 @@ function handleAnswer(selectedIndex) {
     if (selectedIndex === question.correctOptionIndex) {
         resultSound = 'static/audio/success.mp3';
         quiz.correctAnswersCount++;
+        setCurrentQuiz(quiz);
         renderCorrectCounter();
     }
 
@@ -201,4 +201,7 @@ function handleAnswer(selectedIndex) {
             quizImage.style.transform = 'rotateY(360deg)';
         }, 0);
     }, 1000);
+
+    quiz.currentQuestionIndex++;
+    setCurrentQuiz(quiz);
 }

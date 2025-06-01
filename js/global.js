@@ -1,3 +1,5 @@
+import {Quiz} from "./model/quiz.js";
+
 export const genres = []
 export const musicians = []
 export const albums = []
@@ -11,10 +13,18 @@ export function setCurrentFormState(state) {
     currentFormState = state;
 }
 
-let currentQuiz;
 export function getCurrentQuiz() {
-    return currentQuiz;
+    const storedQuiz = localStorage.getItem('quiz');
+    if (storedQuiz === null)
+        return null;
+
+    return Object.assign(new Quiz(), JSON.parse(storedQuiz));
 }
 export function setCurrentQuiz(quiz) {
-    currentQuiz = quiz;
+    if (quiz === null) {
+        localStorage.removeItem('quiz');
+    }
+    else {
+        localStorage.setItem('quiz', JSON.stringify(quiz));
+    }
 }

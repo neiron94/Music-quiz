@@ -2,7 +2,7 @@ import { musicians, songs, albums, setCurrentQuiz } from '../global.js';
 import { getAllPossibleAnswers } from './answerProvider.js';
 import { Quiz, QuizQuestion } from '../model/quiz.js';
 import { getRandomSample, getRandomElement } from '../utils.js';
-import { startQuizRender } from "./quizRender.js";
+import {showQuizSectionArticle} from "../sectionShowHide.js";
 
 const submitButton = document.getElementById('quiz-set-up-submit');
 const setUpForm = document.getElementById('quiz-set-up-form');
@@ -11,7 +11,7 @@ export function setUpQuizGenerator() {
     submitButton.addEventListener('click', e => {
         e.preventDefault();
         generateQuiz();
-        startQuizRender();
+        showQuizSectionArticle();
     });
 }
 

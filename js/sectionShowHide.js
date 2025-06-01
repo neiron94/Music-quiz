@@ -1,4 +1,4 @@
-import {stopPlayingAudio} from "./quiz/quizRender.js";
+import {renderQuizUI, renderResultsText, stopPlayingAudio} from "./quiz/quizRender.js";
 import {getCurrentQuiz, setCurrentQuiz} from "./global.js";
 
 const links = document.querySelectorAll('nav a');
@@ -14,8 +14,8 @@ export function setUpSectionShowHide() {
 function setUpNavigation() {
     // Force #home-section if no hash was provided
     if (location.hash.replace('#', '') === "") {
-        location.replace(`${location.origin}${location.pathname}#home-section`);
-        history.replaceState(null, '', `${location.origin}${location.pathname}${location.hash}`);
+        location.replace(`${location.pathname}#home-section`);
+        history.replaceState(null, '', `${location.pathname}${location.hash}`);
     }
 
     // Show proper section
@@ -31,7 +31,7 @@ function setUpNavigation() {
             if (location.hash.replace('#', '') !== sectionId) {
                 showSection(sectionId);
                 stopPlayingAudio();
-                history.pushState(null, '', `${location.origin}${location.pathname}#${sectionId}`);
+                history.pushState(null, '', `${location.pathname}#${sectionId}`);
             }
         });
     });
@@ -72,10 +72,15 @@ function showQuizArticle(id) {
 
 export function showQuizSectionArticle() {
     const quiz = getCurrentQuiz();
-    if (quiz === null)
+    if (quiz === null) {
         showQuizArticle('set-up-part');
-    else if (!quiz.finished)
+    }
+    else if (!quiz.finished) {
         showQuizArticle('quiz-part');
-    else
+        renderQuizUI();
+    }
+    else {
         showQuizArticle('results-part');
+        renderResultsText();
+    }
 }
