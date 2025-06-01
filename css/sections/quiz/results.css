@@ -1,0 +1,28 @@
+/* Quiz Section, Results Part */
+#results-section {
+    text-align: center;
+}
+
+#results-text {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+}
+
+#new-quiz {
+    min-height: 3rem;
+    padding: 0.5rem;
+    margin: 1rem;
+    font-size: 1rem;
+    text-align: center;
+
+    border: none;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#new-quiz:hover {
+    background-color: #005fa3;
+    cursor: pointer;
+}

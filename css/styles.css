@@ -1,9 +1,10 @@
 @import url("base.css");
 @import url("headerMainFooter.css");
 @import url("sections/common.css");
-@import url("sections/setup.css");
-@import url("sections/quiz.css");
-@import url("sections/results.css");
+@import url("sections/quiz/common.css");
+@import url("sections/quiz/setup.css");
+@import url("sections/quiz/quiz.css");
+@import url("sections/quiz/results.css");
 
 
 /*!* Responsive *!*/

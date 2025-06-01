@@ -1,50 +1,81 @@
-import {resetAnsweredQuiz} from "./quiz/quizRender.js";
+import {stopPlayingAudio} from "./quiz/quizRender.js";
+import {getCurrentQuiz, setCurrentQuiz} from "./global.js";
 
 const links = document.querySelectorAll('nav a');
-const submitButton = document.getElementById('quiz-set-up-submit');
 const sections = document.querySelectorAll('main > section');
+const quizSectionArticles = document.querySelectorAll('#quiz-section article');
+const playNavigationButton = document.getElementById('play-navigation');
+const newQuizButton = document.getElementById('new-quiz');
 
 export function setUpSectionShowHide() {
     setUpNavigation();
-    setUpQuizShowHide();
 }
 
 function setUpNavigation() {
+    // Force #home-section if no hash was provided
+    if (location.hash.replace('#', '') === "") {
+        location.replace(`${location.origin}${location.pathname}#home-section`);
+        history.replaceState(null, '', `${location.origin}${location.pathname}${location.hash}`);
+    }
+
+    // Show proper section
+    const sectionId = location.hash.replace('#', '');
+    showSection(sectionId);
+
+    // Navigation rules
     links.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            const sectionId = link.dataset.section;
-            showSection(sectionId);
-            resetAnsweredQuiz();
 
-            // history.pushState(null, '', `#${sectionId}`);
+            const sectionId = link.dataset.section;
+            if (location.hash.replace('#', '') !== sectionId) {
+                showSection(sectionId);
+                stopPlayingAudio();
+                history.pushState(null, '', `${location.origin}${location.pathname}#${sectionId}`);
+            }
         });
     });
 
-    // window.addEventListener('DOMContentLoaded', () => {
-    //     const sectionId = location.hash.replace('#', '') || 'home';
-    //     showSection(sectionId);
-    // });
-    //
-    // window.addEventListener('popstate', () => {
-    //     const sectionId = location.hash.replace('#', '') || 'home';
-    //     showSection(sectionId);
-    // });
-}
-
-function setUpQuizShowHide() {
-    submitButton.addEventListener('click', (e) => {
+    // Make history back/forward buttons work
+    window.addEventListener('popstate', (e) => {
         e.preventDefault();
-        showSection('quiz-section');
-        resetAnsweredQuiz();
-    })
+        const sectionId = location.hash.replace('#', '') || 'home-section';
+        showSection(sectionId);
+    });
+
+    // Quiz Articles show/hide
+    playNavigationButton.addEventListener('click', () => {
+        showQuizSectionArticle();
+    });
+
+    newQuizButton.addEventListener('click', () => {
+        setCurrentQuiz(null);
+        showQuizSectionArticle();
+    });
 }
 
 export function showSection(id) {
     sections.forEach(section => {
         section.classList.remove('active');
-        if (section.id === id) {
+        if (section.id === id)
             section.classList.add('active');
-        }
     });
+}
+
+function showQuizArticle(id) {
+    quizSectionArticles.forEach(article => {
+        article.classList.remove('active');
+        if (article.id === id)
+            article.classList.add('active');
+    });
+}
+
+export function showQuizSectionArticle() {
+    const quiz = getCurrentQuiz();
+    if (quiz === null)
+        showQuizArticle('set-up-part');
+    else if (!quiz.finished)
+        showQuizArticle('quiz-part');
+    else
+        showQuizArticle('results-part');
 }

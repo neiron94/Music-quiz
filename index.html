@@ -12,7 +12,7 @@
     <nav>
         <ul>
             <li><a href="#" data-section="home-section">Home</a></li>
-            <li><a href="#" data-section="quiz-set-up-section" id="play-navigation">Play</a></li>
+            <li><a href="#" data-section="quiz-section" id="play-navigation">Play</a></li>
             <li><a href="#" data-section="genres-section">Genres</a></li>
             <li><a href="#" data-section="musicians-section">Musicians</a></li>
         </ul>
@@ -40,150 +40,153 @@
         <ul id="musicians-list"></ul>
     </section>
 
-    <section id="quiz-set-up-section">
-        <form id="quiz-set-up-form">
-            <fieldset id="game-mode" class="quiz-form-fieldset active">
-                <legend>Game Mode</legend>
-
-                <span class="input-label active" id="guess-song-span">
-                    <input type="radio" id="guess-song" name="game-mode" value="song" required>
-                    <label for="guess-song">Guess song</label>
-                </span>
-
-                <span class="input-label active" id="guess-musician-span">
-                    <input type="radio" id="guess-musician" name="game-mode" value="musician" required>
-                    <label for="guess-musician">Guess musician</label>
-                </span>
-            </fieldset>
-
-            <fieldset id="musician-mode" class="quiz-form-fieldset">
-                <legend>Musician mode settings</legend>
-
-                <div class="main-mode-options">
-                    <span class="input-label" id="musician-by-genre-span">
-                        <input type="radio" id="musician-by-genre" name="musician-by" value="genre" required>
-                        <label for="musician-by-genre">Guess by genre</label>
-                    </span>
-
-                        <span class="input-label" id="musician-by-all-span">
-                        <input type="radio" id="musician-by-all" name="musician-by" value="all" required>
-                        <label for="musician-by-all">Guess all musicians</label>
-                    </span>
-                </div>
-
-                <span class="input-label" id="musician-genre-select-span">
-                    <label for="musician-genre-select" class="select-label">Genre:</label>
-                    <select name="musician-genre" id="musician-genre-select" required></select>
-                </span>
-            </fieldset>
-
-            <fieldset id="song-mode" class="quiz-form-fieldset">
-                <legend>Song mode settings</legend>
-
-                <div class="main-mode-options">
-                    <span class="input-label" id="song-by-genre-span">
-                        <input type="radio" id="song-by-genre" name="song-by" value="genre" required>
-                        <label for="song-by-genre">Guess by genre</label>
-                    </span>
-
-                        <span class="input-label" id="song-by-musician-span">
-                        <input type="radio" id="song-by-musician" name="song-by" value="musician" required>
-                        <label for="song-by-musician">Guess by musician</label>
-                    </span>
-
-                        <span class="input-label" id="song-by-all-span">
-                        <input type="radio" id="song-by-all" name="song-by" value="all" required>
-                        <label for="song-by-all">Guess all songs</label>
-                    </span>
-                </div>
-
-                <span class="input-label" id="song-genre-select-span">
-                    <label for="song-genre-select" class="select-label">Genre:</label>
-                    <select name="song-genre" id="song-genre-select" required></select>
-                </span>
-
-                <span class="input-label" id="song-musician-select-span">
-                    <label for="song-musician-select" class="select-label">Musician:</label>
-                    <select name="song-musician" id="song-musician-select" required></select>
-                </span>
-            </fieldset>
-
-            <fieldset id="additional-settings" class="quiz-form-fieldset">
-                <legend>Additional setting</legend>
-
-                <span class="input-label" id="listen-duration-span">
-                    <label for="listen-duration">Listen duration:</label>
-                    <select id="listen-duration" name="listen-duration" required>
-                        <option value="long">Long</option>
-                        <option value="normal">Normal</option>
-                        <option value="short">Short</option>
-                    </select>
-                </span>
-
-                <span class="input-label" id="question-number-span">
-                    <label for="question-number">Question number:</label>
-                    <span class="slide-bar">
-                        <input type="range" id="question-number" name="question-number" min="1" max="5" step="1" />
-                        <span class="slide-bar-values">
-                            <span class="slide-bar-min">1</span>
-                            <span class="slide-bar-current">current value</span>
-                            <span class="slide-bar-max">5</span>
-                        </span>
-                    </span>
-                </span>
-
-                <span class="input-label" id="replay-number-span">
-                    <label for="replay-number">Replay number:</label>
-                    <span class="slide-bar">
-                        <input type="range" id="replay-number" name="replay-number" min="1" max="5" step="1" />
-                        <span class="slide-bar-values">
-                            <span class="slide-bar-min">1</span>
-                            <span class="slide-bar-current">current value</span>
-                            <span class="slide-bar-max">5</span>
-                        </span>
-                    </span>
-                </span>
-            </fieldset>
-
-            <button id="quiz-set-up-submit" type="submit" hidden>Play</button>
-        </form>
-    </section>
-
     <section id="quiz-section">
-        <span id="question-counter">Question: 1 / 10</span>
+        <article id="set-up-part" class="active">
+            <form id="quiz-set-up-form">
+                <fieldset id="game-mode" class="quiz-form-fieldset active">
+                    <legend>Game Mode</legend>
 
-        <span id="correct-counter">Correct: 0</span>
+                    <span class="input-label active" id="guess-song-span">
+                        <input type="radio" id="guess-song" name="game-mode" value="song" required>
+                        <label for="guess-song">Guess song</label>
+                    </span>
 
-        <img id="quiz-image" width="200px" height="200px" src="static/img/svg/question.svg" data-swap-src="static/img/svg/placeholder.svg" alt="Musician or Album Cover" />
+                    <span class="input-label active" id="guess-musician-span">
+                        <input type="radio" id="guess-musician" name="game-mode" value="musician" required>
+                        <label for="guess-musician">Guess musician</label>
+                    </span>
+                </fieldset>
 
-        <svg id="replay-button" class="active" width="50px" height="50px" viewBox="0 0 24 24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <style>.cls-1{fill:green;stroke:#020202;stroke-miterlimit:10;stroke-width:1.91px;}</style>
-            </defs>
-            <circle class="cls-1" cx="12" cy="12" r="10.5"/>
-            <polyline class="cls-1" points="12.96 4.36 15.82 7.23 12.96 10.09"/>
-            <polyline class="cls-1" points="12.96 4.36 15.82 7.23 12.96 10.09"/>
-            <polyline class="cls-1" points="11.04 13.91 8.18 16.77 11.04 19.64"/>
-            <path class="cls-1" d="M17.73,11.05h0A5.73,5.73,0,0,1,12,16.77H8.18"/>
-            <path class="cls-1" d="M17.73,11.05h0A5.73,5.73,0,0,1,12,16.77H8.18"/>
-            <path class="cls-1" d="M6.27,13h0A5.73,5.73,0,0,1,12,7.23h3.82"/>
-        </svg>
+                <fieldset id="musician-mode" class="quiz-form-fieldset">
+                    <legend>Musician mode settings</legend>
 
-        <span id="replay-counter">Replays: 0 / 3</span>
+                    <div class="main-mode-options">
+                        <span class="input-label" id="musician-by-genre-span">
+                            <input type="radio" id="musician-by-genre" name="musician-by" value="genre" required>
+                            <label for="musician-by-genre">Guess by genre</label>
+                        </span>
 
-        <span class="quiz-answers">
-            <button class="answer-button" data-index="0">Answer 1</button>
-            <button class="answer-button" data-index="1">Answer 2</button>
-            <button class="answer-button" data-index="2">Answer 3</button>
-            <button class="answer-button" data-index="3">Answer 4</button>
-        </span>
+                            <span class="input-label" id="musician-by-all-span">
+                            <input type="radio" id="musician-by-all" name="musician-by" value="all" required>
+                            <label for="musician-by-all">Guess all musicians</label>
+                        </span>
+                    </div>
 
-        <button id="next-question" type="button">Next</button>
-    </section>
+                    <span class="input-label" id="musician-genre-select-span">
+                        <label for="musician-genre-select" class="select-label">Genre:</label>
+                        <select name="musician-genre" id="musician-genre-select" required></select>
+                    </span>
+                </fieldset>
 
-    <section id="results-section">
-        <h2>Quiz Finished</h2>
-        <p id="results-text">Statistic</p>
+                <fieldset id="song-mode" class="quiz-form-fieldset">
+                    <legend>Song mode settings</legend>
+
+                    <div class="main-mode-options">
+                        <span class="input-label" id="song-by-genre-span">
+                            <input type="radio" id="song-by-genre" name="song-by" value="genre" required>
+                            <label for="song-by-genre">Guess by genre</label>
+                        </span>
+
+                            <span class="input-label" id="song-by-musician-span">
+                            <input type="radio" id="song-by-musician" name="song-by" value="musician" required>
+                            <label for="song-by-musician">Guess by musician</label>
+                        </span>
+
+                            <span class="input-label" id="song-by-all-span">
+                            <input type="radio" id="song-by-all" name="song-by" value="all" required>
+                            <label for="song-by-all">Guess all songs</label>
+                        </span>
+                    </div>
+
+                    <span class="input-label" id="song-genre-select-span">
+                        <label for="song-genre-select" class="select-label">Genre:</label>
+                        <select name="song-genre" id="song-genre-select" required></select>
+                    </span>
+
+                    <span class="input-label" id="song-musician-select-span">
+                        <label for="song-musician-select" class="select-label">Musician:</label>
+                        <select name="song-musician" id="song-musician-select" required></select>
+                    </span>
+                </fieldset>
+
+                <fieldset id="additional-settings" class="quiz-form-fieldset">
+                    <legend>Additional setting</legend>
+
+                    <span class="input-label" id="listen-duration-span">
+                        <label for="listen-duration">Listen duration:</label>
+                        <select id="listen-duration" name="listen-duration" required>
+                            <option value="long">Long</option>
+                            <option value="normal">Normal</option>
+                            <option value="short">Short</option>
+                        </select>
+                    </span>
+
+                    <span class="input-label" id="question-number-span">
+                        <label for="question-number">Question number:</label>
+                        <span class="slide-bar">
+                            <input type="range" id="question-number" name="question-number" min="1" max="5" step="1" />
+                            <span class="slide-bar-values">
+                                <span class="slide-bar-min">1</span>
+                                <span class="slide-bar-current">current value</span>
+                                <span class="slide-bar-max">5</span>
+                            </span>
+                        </span>
+                    </span>
+
+                    <span class="input-label" id="replay-number-span">
+                        <label for="replay-number">Replay number:</label>
+                        <span class="slide-bar">
+                            <input type="range" id="replay-number" name="replay-number" min="1" max="5" step="1" />
+                            <span class="slide-bar-values">
+                                <span class="slide-bar-min">1</span>
+                                <span class="slide-bar-current">current value</span>
+                                <span class="slide-bar-max">5</span>
+                            </span>
+                        </span>
+                    </span>
+                </fieldset>
+
+                <button id="quiz-set-up-submit" type="submit" hidden>Play</button>
+            </form>
+        </article>
+
+        <article id="quiz-part">
+            <span id="question-counter">Question: 1 / 10</span>
+
+            <span id="correct-counter">Correct: 0</span>
+
+            <img id="quiz-image" width="200px" height="200px" src="static/img/svg/question.svg" data-swap-src="static/img/svg/placeholder.svg" alt="Musician or Album Cover" />
+
+            <svg id="replay-button" class="active" width="50px" height="50px" viewBox="0 0 24 24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>.cls-1{fill:green;stroke:#020202;stroke-miterlimit:10;stroke-width:1.91px;}</style>
+                </defs>
+                <circle class="cls-1" cx="12" cy="12" r="10.5"/>
+                <polyline class="cls-1" points="12.96 4.36 15.82 7.23 12.96 10.09"/>
+                <polyline class="cls-1" points="12.96 4.36 15.82 7.23 12.96 10.09"/>
+                <polyline class="cls-1" points="11.04 13.91 8.18 16.77 11.04 19.64"/>
+                <path class="cls-1" d="M17.73,11.05h0A5.73,5.73,0,0,1,12,16.77H8.18"/>
+                <path class="cls-1" d="M17.73,11.05h0A5.73,5.73,0,0,1,12,16.77H8.18"/>
+                <path class="cls-1" d="M6.27,13h0A5.73,5.73,0,0,1,12,7.23h3.82"/>
+            </svg>
+
+            <span id="replay-counter">Replays: 0 / 3</span>
+
+            <span class="quiz-answers">
+                <button class="answer-button" data-index="0">Answer 1</button>
+                <button class="answer-button" data-index="1">Answer 2</button>
+                <button class="answer-button" data-index="2">Answer 3</button>
+                <button class="answer-button" data-index="3">Answer 4</button>
+            </span>
+
+            <button id="next-question" type="button">Next</button>
+        </article>
+
+        <article id="results-part">
+            <h2>Quiz Finished</h2>
+            <p id="results-text">Statistic</p>
+            <button id="new-quiz" type="button">New Quiz</button>
+        </article>
     </section>
 </main>
 

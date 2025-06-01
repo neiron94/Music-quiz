@@ -1,5 +1,5 @@
 import { getCurrentQuiz } from '../global.js';
-import { showSection } from '../sectionShowHide.js';
+import {showQuizSectionArticle} from '../sectionShowHide.js';
 
 export function startQuizRender() {
     renderQuizUI();
@@ -51,7 +51,8 @@ nextQuestionButton.addEventListener("click", () => {
         renderQuizUI();
     } else {
         resultsText.textContent = `You answered ${getCurrentQuiz().correctAnswersCount} out of ${getCurrentQuiz().questions.length} correctly.`;
-        showSection('results-section');
+        quiz.finished = true;
+        showQuizSectionArticle();
     }
 });
 
@@ -104,7 +105,7 @@ function renderQuizUI() {
     if (question.replays < quiz.maxReplays)
         replayButton.classList.add('active');
 
-    showSection('quiz-section');
+    showQuizSectionArticle();
 
     // Set image
     quizImage.src = "static/img/svg/question.svg";
@@ -139,7 +140,7 @@ function renderReplayCounter() {
     replayCounter.textContent = `Replays: ${question.replays} / ${quiz.maxReplays}`;
 }
 
-function stopPlayingAudio() {
+export function stopPlayingAudio() {
     if (playingAudio !== null) {
         playingAudio.pause();
         playingAudio.currentTime = 0;

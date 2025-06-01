@@ -6,6 +6,7 @@ import { setUpQuizGenerator } from './quiz/quizGenerator.js';
 import { fillMusiciansSection } from './musiciansSectionFiller.js';
 import { fillGenresSection } from './genresSectionFiller.js';
 
+
 await parseConfig();
 setUpSectionShowHide();
 fillSetUpFormHtml();

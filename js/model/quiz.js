@@ -23,6 +23,7 @@ export class QuizQuestion {
     options
     correctOptionIndex
     replays
+    finished
 
     constructor(audio, fullAudio, image, options, correctOptionIndex) {
         this.audio = audio;
@@ -31,5 +32,6 @@ export class QuizQuestion {
         this.options = options;
         this.correctOptionIndex = correctOptionIndex;
         this.replays = 0;
+        this.finished = false;
     }
 }

@@ -1,10 +1,15 @@
 import { setCurrentFormState } from "../global.js";
 import { getAllPossibleAnswers } from './answerProvider.js';
+import { getCurrentQuiz } from '../global.js';
 
 const MAX_QUESTIONS = 50;
 
 export function setUpStateTransitions() {
-    playNavigationButton.addEventListener('click', () => transitionTo('start'));
+    playNavigationButton.addEventListener('click', () => {
+        if (getCurrentQuiz() === null)
+            transitionTo('start');
+    });
+    newQuizButton.addEventListener('click', () => transitionTo('start'));
 
     songModeRadio.addEventListener('change', () => transitionTo('songModeChecked'));
     songByGenreRadio.addEventListener('change', () => transitionTo('songModeByGenreChecked'));
@@ -21,6 +26,7 @@ export function setUpStateTransitions() {
 
 
 const playNavigationButton = document.getElementById('play-navigation');
+const newQuizButton = document.getElementById('new-quiz');
 
 const songModeRadio = document.getElementById('guess-song');
 const songByGenreRadio = document.getElementById('song-by-genre');
