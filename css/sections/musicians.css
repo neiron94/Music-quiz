@@ -13,9 +13,9 @@
     gap: 1rem;
 
     padding: 1rem;
-    border: #020202 solid 3px;
-    border-radius: 10px;
-    background-color: #f0f0f0;
+    border: 1px solid #2c2c2c;
+    border-radius: 16px;
+    background-color: white;
 }
 
 /* Header (h2 + description) */
@@ -57,7 +57,7 @@
     border: none;
     background-color: #333;
     color: white;
-    border-radius: 5px;
+    border-radius: 8px;
     transition: background-color 0.3s;
 }
 
@@ -95,7 +95,7 @@
 }
 
 /* Album Image */
-.album-image {
+.musician-album-image {
     width: 15rem;
     border: #020202 solid 3px;
 }
@@ -112,7 +112,7 @@
         width: 20rem;
     }
 
-    .album-image {
+    .musician-album-image {
         width: 10rem;
     }
 }

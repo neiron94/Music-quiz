@@ -1,11 +1,12 @@
 import {renderQuizUI, renderResultsText, stopPlayingAudio} from "./quiz/quizRender.js";
 import {getCurrentQuiz, setCurrentQuiz} from "./global.js";
 
-const links = document.querySelectorAll('nav a');
+const links = document.querySelectorAll('nav button');
 const sections = document.querySelectorAll('main > section');
 const quizSectionArticles = document.querySelectorAll('#quiz-section article');
 const playNavigationButton = document.getElementById('play-navigation');
 const newQuizButton = document.getElementById('new-quiz');
+const homePlayButton = document.getElementById('home-play-button');
 
 export function setUpSectionShowHide() {
     setUpNavigation();
@@ -44,13 +45,21 @@ function setUpNavigation() {
     });
 
     // Quiz Articles show/hide
-    playNavigationButton.addEventListener('click', () => {
+    playNavigationButton.addEventListener('click', (e) => {
+        e.preventDefault();
         showQuizSectionArticle();
     });
 
-    newQuizButton.addEventListener('click', () => {
+    newQuizButton.addEventListener('click', (e) => {
+        e.preventDefault();
         setCurrentQuiz(null);
         showQuizSectionArticle();
+    });
+
+    // Home section, play button
+    homePlayButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        playNavigationButton.dispatchEvent(new Event('click'));
     });
 }
 

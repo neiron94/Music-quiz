@@ -1,0 +1,118 @@
+/* Genres section */
+#genres-list {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+#genres-list article {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+
+    padding: 1rem;
+    border: 1px solid #2c2c2c;
+    border-radius: 16px;
+    background-color: white;
+}
+
+/* Header (h2 + description) */
+#genres-list header {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Genres description (imageButton + text) */
+.genre-description {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    width: 100%;
+}
+
+/* Image with quiz buttons */
+.genre-image-button {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Genre Image */
+.genre-image {
+    width: 25rem;
+    border: #020202 solid 3px;
+}
+
+/* Quiz buttons */
+.genre-song-button, .genre-musician-button {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border: none;
+    background-color: #333;
+    color: white;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.genre-song-button:hover, .genre-musician-button:hover {
+    background-color: #005fa3;
+    cursor: pointer;
+}
+
+/* Musicians span (musicians text + musicians list) */
+.genre-musicians-span {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.5rem;
+}
+
+/* Musicians list */
+.genre-musician-list {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1rem;
+}
+
+/* Musician list item (item = name + image) */
+.genre-musician-span {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+/* Musician Name */
+.genre-musician-name {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+
+/* Musician Image */
+.genre-musician-image {
+    width: 15rem;
+    border: #020202 solid 3px;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .genre-description {
+        flex-flow: column nowrap;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .genre-image {
+        width: 20rem;
+    }
+
+    .genre-musician-image {
+        width: 10rem;
+    }
+}

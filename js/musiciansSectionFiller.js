@@ -26,7 +26,7 @@ export function fillMusiciansSection() {
 
         // Musician image
         const image = document.createElement('img');
-        image.src = musician.image;
+        image.src = musician.image || "static/img/svg/placeholder.svg";
         image.classList.add('musician-image');
         imageButtonSpan.appendChild(image);
 
@@ -77,8 +77,8 @@ export function fillMusiciansSection() {
 
             // Album image
             const albumImage = document.createElement('img');
-            albumImage.src = album.image;
-            albumImage.classList.add('album-image');
+            albumImage.src = album.image || "static/img/svg/placeholder.svg";
+            albumImage.classList.add('musician-album-image');
             albumSpan.appendChild(albumImage);
 
             li.appendChild(albumSpan);

@@ -11,16 +11,29 @@
     <h1>Music Quiz</h1>
     <nav>
         <ul>
-            <li><a href="#" data-section="home-section">Home</a></li>
-            <li><a href="#" data-section="quiz-section" id="play-navigation">Play</a></li>
-            <li><a href="#" data-section="genres-section">Genres</a></li>
-            <li><a href="#" data-section="musicians-section">Musicians</a></li>
+            <li><button data-section="home-section">Home</button></li>
+            <li><button data-section="quiz-section" id="play-navigation">Play</button></li>
+            <li><button data-section="genres-section">Genres</button></li>
+            <li><button data-section="musicians-section">Musicians</button></li>
         </ul>
     </nav>
 </header>
 
 <main>
-    <section id="home-section" class="active"> HOME </section>
+    <section id="home-section" class="active">
+        <h2>Welcome to Music Quiz!</h2>
+        <p><strong>Think you know your music?</strong> Put your knowledge to the test with <em>Music Quiz</em> — a fun and interactive way to challenge yourself and discover new artists and genres!</p>
+
+        <ul>
+            <li><strong>Customize your quiz</strong> by selecting a genre or musician, adjusting the number of questions, and choosing how long each song clip plays.</li>
+            <li><strong>Play instantly</strong> with a randomly generated set of music questions.</li>
+            <li><strong>Explore music genres and artists</strong> to learn more about them and start themed quizzes with a single click.</li>
+        </ul>
+
+        <p>Each question plays a short clip — your goal is to guess the correct answer from four options. Ready to play?</p>
+
+        <button id="home-play-button">👉 Start Playing</button>
+    </section>
 
     <section id="genres-section">
         <ul id="genres-list"></ul>
