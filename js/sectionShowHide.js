@@ -22,6 +22,7 @@ function setUpNavigation() {
     // Show proper section
     const sectionId = location.hash.replace('#', '');
     showSection(sectionId);
+    showQuizSectionArticle();
 
     // Navigation rules
     links.forEach(link => {

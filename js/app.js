@@ -8,6 +8,11 @@ import { fillMusiciansSection } from './musiciansSectionFiller.js';
 import { fillGenresSection } from './genresSectionFiller.js';
 import { setUpFormHistory } from './formHistory.js';
 
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('serviceworker.js').catch(() => {});
+    });
+}
 
 await parseConfig();
 setUpStateTransitions();

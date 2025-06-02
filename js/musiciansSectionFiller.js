@@ -1,4 +1,4 @@
-import { musicians, albums } from './global.js';
+import {musicians, albums, setCurrentQuiz} from './global.js';
 
 const musiciansList = document.getElementById('musicians-list');
 
@@ -39,6 +39,7 @@ export function fillMusiciansSection() {
 
         // Event listener for quiz button
         quizButton.addEventListener('click', () => {
+            setCurrentQuiz(null);
             location.assign(`${location.pathname}?game-mode=song&song-by=musician&song-musician=${musician.name}#quiz-section`);
         });
 

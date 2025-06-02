@@ -47,7 +47,7 @@
 /* Genre Image */
 .genre-image {
     width: 25rem;
-    border: #020202 solid 3px;
+    border: 1px solid #2c2c2c;
 }
 
 /* Quiz buttons */
@@ -101,7 +101,7 @@
 /* Musician Image */
 .genre-musician-image {
     width: 15rem;
-    border: #020202 solid 3px;
+    border: 1px solid #2c2c2c;
 }
 
 /* Responsive */

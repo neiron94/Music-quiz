@@ -1,4 +1,4 @@
-import {genres, musicians} from './global.js';
+import {genres, musicians, setCurrentQuiz} from './global.js';
 
 const genresList = document.getElementById('genres-list');
 
@@ -44,9 +44,11 @@ export function fillGenresSection() {
 
         // Event listeners for quiz buttons
         songQuizButton.addEventListener('click', () => {
+            setCurrentQuiz(null);
             location.assign(`${location.pathname}?game-mode=song&song-by=genre&song-genre=${genre.name}#quiz-section`);
         });
         musicianQuizButton.addEventListener('click', () => {
+            setCurrentQuiz(null);
             location.assign(`${location.pathname}?game-mode=musician&musician-by=genre&musician-genre=${genre.name}#quiz-section`);
         });
 
