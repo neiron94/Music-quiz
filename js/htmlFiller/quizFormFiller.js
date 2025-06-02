@@ -4,6 +4,8 @@ const musicianGenreSelect = document.getElementById('musician-genre-select');
 const songGenreSelect = document.getElementById('song-genre-select');
 const songMusicianSelect = document.getElementById('song-musician-select');
 
+/* Should be called after config parsing.
+*  Fills data from config into form selects. */
 export function fillQuizForm() {
     addAllGenres(musicianGenreSelect);
     addAllGenres(songGenreSelect);
@@ -32,6 +34,7 @@ function addAllMusicians(selectElement) {
     }
 }
 
+/* Generates placeholder select option */
 function addDefaultOption(selectElement) {
     const defaultOption = document.createElement('option');
     defaultOption.value = "";

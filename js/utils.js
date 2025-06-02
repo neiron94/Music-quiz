@@ -1,3 +1,4 @@
+/* Set up helping functions */
 export function setUpUtils() {
     Array.prototype.randomSample = function (n) {
         const copy = this.slice();

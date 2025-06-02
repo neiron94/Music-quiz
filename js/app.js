@@ -7,7 +7,7 @@ import { fillMusiciansSection } from './htmlFiller/musiciansSectionFiller.js';
 import { fillGenresSection } from './htmlFiller/genresSectionFiller.js';
 import { setUpFormHistory } from './history/formHistory.js';
 import { executeOnloadActions } from './onloadActions.js';
-import { setUpHistory } from './history/sectionHistory.js';
+import { setUpSectionHistory } from './history/sectionHistory.js';
 import {setUpAudioLogic} from "./quiz/audioPlayer.js";
 import {setUpQuizLogic} from "./quiz/quizLogic.js";
 
@@ -17,19 +17,22 @@ setUpUtils();
 // Parse config
 await parseConfig();
 
-setUpQuizFormAutomaton();
+// Navigation
 setUpNavigation();
-fillQuizForm();
+
+// Quiz
+setUpQuizFormAutomaton();
 setUpAudioLogic();
 setUpQuizLogic();
 
-// Set up history
+// History
 setUpFormHistory();
-setUpHistory();
+setUpSectionHistory();
 
 // Fill html
 fillMusiciansSection();
 fillGenresSection();
+fillQuizForm();
 
 // Default onload actions
 executeOnloadActions();

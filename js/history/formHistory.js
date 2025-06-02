@@ -1,9 +1,8 @@
-import {setCurrentQuiz} from "../model/global.js";
-
 const quizForm = document.getElementById('quiz-set-up-form');
 const submitButton = document.getElementById('quiz-set-up-submit');
 
 export function setUpFormHistory() {
+    // Change url get params after each form change
     quizForm.addEventListener('change', () => {
         const formData = new FormData(quizForm);
         const formDataObj = Object.fromEntries(formData);
@@ -13,25 +12,22 @@ export function setUpFormHistory() {
         history.replaceState(null, '', `${location.pathname}?${paramsString}#quiz-section`);
     });
 
+    // Fill form using url get params
     window.addEventListener('popstate', (e) => {
         e.preventDefault();
         fillFormParams();
     });
 
-    if (location.search !== '') {
-        setCurrentQuiz(null);
-    }
-
+    // Remove params from state url when quiz is started
     submitButton.addEventListener('click', () => {
         history.replaceState(null, '', `${location.pathname}#quiz-section`);
     });
-
-    if (location.hash === "#quiz-section") {
-        fillFormParams();
-    }
 }
 
-function fillFormParams() {
+/* Fill form inputs (select, input-radio, input-range) from url params
+* so form automaton works correctly. Goes through inputs in specified
+* order and "clicks" on them, so form automaton works correctly. */
+export function fillFormParams() {
     const params = new URLSearchParams(location.search);
     formValuesOrder.forEach(orderGroup => {
         params.forEach((value, name) => {

@@ -21,12 +21,12 @@ export function setUpNavigation() {
 
 /* Configure event listeners for section navigation from main Header. */
 function setUpHeaderNavigation() {
-    buttons.forEach(link => {
-        link.addEventListener('click', () => {
-            const sectionId = link.dataset.section;
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const sectionId = btn.dataset.section;
             if (location.hash.replace('#', '') !== sectionId) {
                 showSection(sectionId);
-                stopPlayingAudio(); // TODO - move to player
+                stopPlayingAudio();
             }
         });
     });

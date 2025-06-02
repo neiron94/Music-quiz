@@ -5,6 +5,7 @@ export const musicians = []
 export const albums = []
 export const songs = []
 
+// Current state of form automaton
 let currentFormState;
 export function getCurrentFormState() {
     return currentFormState;
@@ -13,6 +14,7 @@ export function setCurrentFormState(state) {
     currentFormState = state;
 }
 
+// Use local storage for current quiz holding
 export function getCurrentQuiz() {
     const storedQuiz = localStorage.getItem('quiz');
     if (storedQuiz === null)

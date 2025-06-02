@@ -1,6 +1,7 @@
 import { Genre, Musician, Album, Song } from './entities.js';
 import {genres, musicians, albums, songs } from './global.js';
 
+/* Parse main config */
 export async function parseConfig() {
     try {
         const response = await fetch('static/config/entities.json');
