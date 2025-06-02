@@ -1,3 +1,4 @@
+import {} from './utils.js';
 import { setUpStateTransitions } from './quiz/formAutomaton.js';
 import { setUpSectionShowHide } from './sectionShowHide.js';
 import { parseConfig } from './configParser.js';

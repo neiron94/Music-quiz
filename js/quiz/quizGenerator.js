@@ -1,8 +1,7 @@
 import { musicians, songs, albums, setCurrentQuiz } from '../global.js';
 import { getAllPossibleAnswers } from './answerProvider.js';
 import { Quiz, QuizQuestion } from '../model/quiz.js';
-import { getRandomSample, getRandomElement } from '../utils.js';
-import {showQuizSectionArticle} from "../sectionShowHide.js";
+import { showQuizSectionArticle } from "../sectionShowHide.js";
 
 const submitButton = document.getElementById('quiz-set-up-submit');
 const setUpForm = document.getElementById('quiz-set-up-form');
@@ -20,7 +19,7 @@ function generateQuiz() {
     const gameMode = formData.get('game-mode');
 
     const allAnswers = getAllPossibleAnswers();
-    const chosenAnswers = getRandomSample(allAnswers, formData.get('question-number'));
+    const chosenAnswers = allAnswers.randomSample(formData.get('question-number'));
 
     const questions = []
 
@@ -39,9 +38,9 @@ function generateQuiz() {
         if (otherPossibleAnswers.length < 3) {
             otherPossibleAnswers = getOtherAnswers(gameMode, answerName);
         }
-        let options = getRandomSample(otherPossibleAnswers, 3);
+        let options = otherPossibleAnswers.randomSample(3);
         options.push(answerName);
-        options = getRandomSample(options, options.length);
+        options = options.randomSample(options.length);
 
         // Correct option
         const correctOptionIndex = options.indexOf(answerName);
@@ -61,7 +60,7 @@ function getAudioDir(gameMode, answerName) {
         }
         case 'musician': {
             const answerMusician = musicians.find(m => m.name === answerName);
-            const randomMusicianSong = getRandomElement(answerMusician.songs);
+            const randomMusicianSong = answerMusician.songs.randomElement();
             return songs.find(s => s.name === randomMusicianSong).audioDir;
         }
         default: {
