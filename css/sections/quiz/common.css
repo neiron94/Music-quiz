@@ -1,0 +1,11 @@
+/* Quiz Section Articles */
+#quiz-section article {
+    display: none;
+}
+
+#quiz-section article.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

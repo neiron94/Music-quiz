@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Quiz</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="js/app.js"></script>
+</head>
+<body>
+<header>
+    <h1>Music Quiz</h1>
+    <nav>
+        <ul>
+            <li><button type="button" data-section="home-section">Home</button></li>
+            <li><button type="button" data-section="quiz-section" id="play-navigation">Play</button></li>
+            <li><button type="button" data-section="genres-section">Genres</button></li>
+            <li><button type="button" data-section="musicians-section">Musicians</button></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="home-section" class="active">
+        <div id="home-container">
+            <h2>Welcome to Music Quiz!</h2>
+            <p><strong>Think you know your music?</strong> Put your knowledge to the test with <em>Music Quiz</em> — a fun and interactive way to challenge yourself and discover new artists and genres!</p>
+
+            <ul>
+                <li><strong>Customize your quiz</strong> by selecting a genre or musician, adjusting the number of questions, and choosing how long each song clip plays.</li>
+                <li><strong>Play instantly</strong> with a randomly generated set of music questions.</li>
+                <li><strong>Explore music genres and artists</strong> to learn more about them and start themed quizzes with a single click.</li>
+            </ul>
+
+            <p>Each question plays a short clip — your goal is to guess the correct answer from four options. Ready to play?</p>
+
+            <button id="home-play-button">👉 Start Playing</button>
+        </div>
+    </section>
+
+    <section id="genres-section">
+        <div id="genres-container">
+            <ul id="genres-list"></ul>
+        </div>
+    </section>
+
+    <section id="musicians-section">
+        <div id="musicians-container">
+            <ul id="musicians-list"></ul>
+        </div>
+    </section>
+
+    <section id="quiz-section">
+        <div id="quiz-container">
+            <article id="set-up-part" class="active">
+                <form id="quiz-set-up-form">
+                    <fieldset id="game-mode" class="quiz-form-fieldset active">
+                        <legend>Game Mode</legend>
+
+                        <span class="input-label active" id="guess-song-span">
+                        <input type="radio" id="guess-song" name="game-mode" value="song">
+                        <label for="guess-song">Guess song</label>
+                    </span>
+
+                        <span class="input-label active" id="guess-musician-span">
+                        <input type="radio" id="guess-musician" name="game-mode" value="musician">
+                        <label for="guess-musician">Guess musician</label>
+                    </span>
+                    </fieldset>
+
+                    <fieldset id="musician-mode" class="quiz-form-fieldset">
+                        <legend>Musician mode settings</legend>
+
+                        <div class="main-mode-options">
+                        <span class="input-label" id="musician-by-genre-span">
+                            <input type="radio" id="musician-by-genre" name="musician-by" value="genre">
+                            <label for="musician-by-genre">Guess by genre</label>
+                        </span>
+
+                            <span class="input-label" id="musician-by-all-span">
+                            <input type="radio" id="musician-by-all" name="musician-by" value="all">
+                            <label for="musician-by-all">Guess all musicians</label>
+                        </span>
+                        </div>
+
+                        <span class="input-label" id="musician-genre-select-span">
+                        <label for="musician-genre-select" class="select-label">Genre:</label>
+                        <select name="musician-genre" id="musician-genre-select"></select>
+                    </span>
+                    </fieldset>
+
+                    <fieldset id="song-mode" class="quiz-form-fieldset">
+                        <legend>Song mode settings</legend>
+
+                        <div class="main-mode-options">
+                        <span class="input-label" id="song-by-genre-span">
+                            <input type="radio" id="song-by-genre" name="song-by" value="genre">
+                            <label for="song-by-genre">Guess by genre</label>
+                        </span>
+
+                            <span class="input-label" id="song-by-musician-span">
+                            <input type="radio" id="song-by-musician" name="song-by" value="musician">
+                            <label for="song-by-musician">Guess by musician</label>
+                        </span>
+
+                            <span class="input-label" id="song-by-all-span">
+                            <input type="radio" id="song-by-all" name="song-by" value="all">
+                            <label for="song-by-all">Guess all songs</label>
+                        </span>
+                        </div>
+
+                        <span class="input-label" id="song-genre-select-span">
+                        <label for="song-genre-select" class="select-label">Genre:</label>
+                        <select name="song-genre" id="song-genre-select"></select>
+                    </span>
+
+                        <span class="input-label" id="song-musician-select-span">
+                        <label for="song-musician-select" class="select-label">Musician:</label>
+                        <select name="song-musician" id="song-musician-select"></select>
+                    </span>
+                    </fieldset>
+
+                    <fieldset id="additional-settings" class="quiz-form-fieldset">
+                        <legend>Additional setting</legend>
+
+                        <span class="input-label" id="listen-duration-span">
+                        <label for="listen-duration">Listen duration:</label>
+                        <select id="listen-duration" name="listen-duration">
+                            <option value="long">Long</option>
+                            <option value="normal">Normal</option>
+                            <option value="short">Short</option>
+                        </select>
+                    </span>
+
+                        <span class="input-label" id="question-number-span">
+                        <label for="question-number">Question number:</label>
+                        <span class="slide-bar">
+                            <input type="range" id="question-number" name="question-number" min="1" max="5" step="1">
+                            <span class="slide-bar-values">
+                                <span class="slide-bar-min">1</span>
+                                <span class="slide-bar-current">current value</span>
+                                <span class="slide-bar-max">5</span>
+                            </span>
+                        </span>
+                    </span>
+
+                        <span class="input-label" id="replay-number-span">
+                        <label for="replay-number">Replay number:</label>
+                        <span class="slide-bar">
+                            <input type="range" id="replay-number" name="replay-number" min="1" max="5" step="1">
+                            <span class="slide-bar-values">
+                                <span class="slide-bar-min">1</span>
+                                <span class="slide-bar-current">current value</span>
+                                <span class="slide-bar-max">5</span>
+                            </span>
+                        </span>
+                    </span>
+                    </fieldset>
+
+                    <button id="quiz-set-up-submit" type="button" hidden>Play</button>
+                </form>
+            </article>
+
+            <article id="quiz-part">
+                <span id="question-counter">Question: 1 / 10</span>
+
+                <span id="correct-counter">Correct: 0</span>
+
+                <img id="quiz-image" src="static/img/svg/question.svg" data-swap-src="static/img/svg/placeholder.svg" alt="Musician or Album Cover">
+
+                <svg id="replay-button" class="active" width="50px" height="50px" viewBox="0 0 24 24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <style>.cls-1{fill:green;stroke:#020202;stroke-miterlimit:10;stroke-width:1.91px;}</style>
+                    </defs>
+                    <circle class="cls-1" cx="12" cy="12" r="10.5"/>
+                    <polyline class="cls-1" points="12.96 4.36 15.82 7.23 12.96 10.09"/>
+                    <polyline class="cls-1" points="12.96 4.36 15.82 7.23 12.96 10.09"/>
+                    <polyline class="cls-1" points="11.04 13.91 8.18 16.77 11.04 19.64"/>
+                    <path class="cls-1" d="M17.73,11.05h0A5.73,5.73,0,0,1,12,16.77H8.18"/>
+                    <path class="cls-1" d="M17.73,11.05h0A5.73,5.73,0,0,1,12,16.77H8.18"/>
+                    <path class="cls-1" d="M6.27,13h0A5.73,5.73,0,0,1,12,7.23h3.82"/>
+                </svg>
+
+                <span id="replay-counter">Replays: 0 / 3</span>
+
+                <span class="quiz-answers">
+                <button class="answer-button" data-index="0">Answer 1</button>
+                <button class="answer-button" data-index="1">Answer 2</button>
+                <button class="answer-button" data-index="2">Answer 3</button>
+                <button class="answer-button" data-index="3">Answer 4</button>
+            </span>
+
+                <button id="next-question" type="button">Next</button>
+            </article>
+
+            <article id="results-part">
+                <h2>Quiz Finished</h2>
+                <p id="results-text">Statistic</p>
+                <button id="new-quiz" type="button">New Quiz</button>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>Music Quiz 2025 developed by Ales Shvaibovich</p>
+</footer>
+
+</body>
+</html>
