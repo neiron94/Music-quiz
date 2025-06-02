@@ -1,7 +1,9 @@
-import {genres, musicians, setCurrentQuiz} from './global.js';
+import {genres, musicians, setCurrentQuiz} from '../model/global.js';
 
 const genresList = document.getElementById('genres-list');
 
+/* Should be called after config parsing.
+*  Generates and fills html for Genres section. */
 export function fillGenresSection() {
     genres.forEach( genre => {
         const listItem = document.createElement('li');

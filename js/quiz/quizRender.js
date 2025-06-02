@@ -1,5 +1,5 @@
-import {getCurrentQuiz, setCurrentQuiz} from '../global.js';
-import {showQuizSectionArticle} from '../sectionShowHide.js';
+import {getCurrentQuiz} from '../model/global.js';
+import {stopPlayingAudio} from "./audioPlayer.js";
 
 const quizImage = document.getElementById("quiz-image");
 const replayButton = document.getElementById("replay-button");
@@ -10,50 +10,49 @@ const answerButtons = document.querySelectorAll(".answer-button");
 const resultsText = document.getElementById("results-text");
 const nextQuestionButton = document.getElementById("next-question");
 
-let playingAudio = null;
-
-// Attach event listener to replay button
-replayButton.addEventListener("click", () => {
+export function renderQuizUI() {
     const quiz = getCurrentQuiz();
     const question = quiz.getCurrentQuestion();
 
-    if (!replayButton.classList.contains('animate') &&
-        !replayButton.classList.contains('disable') &&
-        question.replays < quiz.maxReplays) {
-        playAudio();
-    }
-});
+    // Activate replay button
+    if (question.replays < quiz.maxReplays)
+        replayButton.classList.add('active');
 
-// Attach event listener to answer buttons
-answerButtons.forEach((btn, index) => {
-    btn.addEventListener("click", () => {
-        if (!btn.classList.contains('correct') &&
-            !btn.classList.contains('incorrect')) {
-            handleAnswer(index);
-        }
+    // Set image
+    quizImage.src = "static/img/svg/question.svg";
+    quizImage.dataset.swapSrc = question.image || "static/img/svg/placeholder.svg";
+    if (question.answered) {
+        [quizImage.src, quizImage.dataset.swapSrc] = [quizImage.dataset.swapSrc, quizImage.src];
+        nextQuestionButton.classList.add('active');
+        renderAnsweredState();
+    }
+
+    // Render counters
+    renderQuestionCounter();
+    renderCorrectCounter();
+    renderReplayCounter();
+
+    // Set answer options
+    answerButtons.forEach((btn, i) => {
+        btn.textContent = question.options[i] || "";
+        btn.dataset.index = i.toString();
     });
-});
+}
 
-// Attach event listener to next question button
-nextQuestionButton.addEventListener("click", () => {
-    // Reset
-    resetAnsweredQuiz();
-
-    // Next question
+export function renderAnsweredState() {
     const quiz = getCurrentQuiz();
-    if (quiz.currentQuestionIndex < quiz.questions.length) {
-        renderQuizUI();
-    } else {
-        renderResultsText();
-        quiz.finished = true;
-        setCurrentQuiz(quiz);
-        showQuizSectionArticle();
-    }
-});
+    const question = quiz.getCurrentQuestion();
 
-export function renderResultsText() {
-    const quiz = getCurrentQuiz();
-    resultsText.textContent = `You answered ${quiz.correctAnswersCount} out of ${quiz.questions.length} correctly.`;
+    // Paint answer buttons
+    answerButtons.forEach(btn => {
+        if (btn.dataset.index === question.correctOptionIndex.toString())
+            btn.classList.add('correct');
+        else
+            btn.classList.add('incorrect');
+    });
+
+    // Disable replay button (answer buttons are already disabled by correct / incorrect)
+    replayButton.classList.add('disable');
 }
 
 export function resetAnsweredQuiz() {
@@ -78,130 +77,24 @@ export function resetAnsweredQuiz() {
     });
 }
 
-function playAudio() {
+export function renderResultsText() {
     const quiz = getCurrentQuiz();
-    const question = quiz.getCurrentQuestion();
-
-    const audio = new Audio(question.audio);
-    audio.play().then( _ => {
-        playingAudio = audio;
-        replayButton.classList.add('animate');
-    });
-    audio.addEventListener('ended', () => {
-        replayButton.classList.remove('animate');
-        question.replays++;
-        setCurrentQuiz(quiz);
-        if (question.replays === parseInt(quiz.maxReplays))
-            replayButton.classList.remove('active');
-        renderReplayCounter();
-        playingAudio = null;
-    });
+    resultsText.textContent = `You answered ${quiz.correctAnswersCount} out of ${quiz.questions.length} correctly.`;
 }
 
-export function renderQuizUI() {
-    const quiz = getCurrentQuiz();
-    const question = quiz.getCurrentQuestion();
-
-    // Activate replay button
-    if (question.replays < quiz.maxReplays)
-        replayButton.classList.add('active');
-
-    // Set image
-    quizImage.src = "static/img/svg/question.svg";
-    quizImage.dataset.swapSrc = question.image || "static/img/svg/placeholder.svg";
-
-    // Render counters
-    renderQuestionCounter();
-    renderCorrectCounter();
-    renderReplayCounter();
-
-    // Set answer options
-    answerButtons.forEach((btn, i) => {
-        btn.textContent = question.options[i] || "";
-        btn.dataset.index = i.toString();
-    });
-}
-
-function renderQuestionCounter() {
+export function renderQuestionCounter() {
     const quiz = getCurrentQuiz();
     questionCounter.textContent = `Question: ${quiz.currentQuestionIndex + 1} / ${quiz.questions.length}`;
 
 }
 
-function renderCorrectCounter() {
+export function renderCorrectCounter() {
     const quiz = getCurrentQuiz();
     correctCounter.textContent = `Correct: ${quiz.correctAnswersCount}`;
 }
 
-function renderReplayCounter() {
+export function renderReplayCounter() {
     const quiz = getCurrentQuiz();
     const question = quiz.getCurrentQuestion();
     replayCounter.textContent = `Replays: ${question.replays} / ${quiz.maxReplays}`;
-}
-
-export function stopPlayingAudio() {
-    if (playingAudio !== null) {
-        playingAudio.pause();
-        playingAudio.currentTime = 0;
-        playingAudio.dispatchEvent(new Event('ended'));
-        playingAudio = null;
-    }
-}
-
-function handleAnswer(selectedIndex) {
-    const quiz = getCurrentQuiz();
-    const question = quiz.getCurrentQuestion();
-
-    // Stop audio
-    stopPlayingAudio();
-
-    // Increment correct answers
-    let resultSound = 'static/audio/fail.mp3';
-    if (selectedIndex === question.correctOptionIndex) {
-        resultSound = 'static/audio/success.mp3';
-        quiz.correctAnswersCount++;
-        setCurrentQuiz(quiz);
-        renderCorrectCounter();
-    }
-
-    // Play result sound, then play full song and show next button
-    playingAudio = new Audio(resultSound);
-    playingAudio.play();
-    playingAudio.addEventListener('ended', () => {
-        setTimeout(() => {
-            playingAudio = new Audio(question.fullAudio);
-            playingAudio.play();
-            playingAudio.addEventListener('ended', () => {
-                playingAudio = null;
-            });
-            nextQuestionButton.classList.add('active');
-        }, 250);
-    })
-
-    // Paint answer buttons
-    answerButtons.forEach(btn => {
-        if (btn.dataset.index === question.correctOptionIndex.toString())
-            btn.classList.add('correct');
-        else
-            btn.classList.add('incorrect');
-    });
-
-    // Disable replay button (answer buttons are already disabled by correct / incorrect)
-    replayButton.classList.add('disable');
-
-    // Flip image
-    quizImage.style.transition = 'transform 1s linear';
-    quizImage.style.transform = 'rotateY(90deg)';
-    setTimeout(() => {
-        [quizImage.src, quizImage.dataset.swapSrc] = [quizImage.dataset.swapSrc, quizImage.src];
-        quizImage.style.transition = '';
-        quizImage.style.transform = 'rotateY(270deg)';
-        setTimeout(() => {
-            quizImage.style.transition = 'transform 1s linear';
-            quizImage.style.transform = 'rotateY(360deg)';
-        }, 0);
-    }, 1000);
-
-    quiz.currentQuestionIndex++;
-    setCurrentQuiz(quiz);
 }

@@ -1,7 +1,9 @@
-import {musicians, albums, setCurrentQuiz} from './global.js';
+import {musicians, albums, setCurrentQuiz} from '../model/global.js';
 
 const musiciansList = document.getElementById('musicians-list');
 
+/* Should be called after config parsing.
+*  Generates and fills html for Musicians section. */
 export function fillMusiciansSection() {
     musicians.forEach( musician => {
         const listItem = document.createElement('li');

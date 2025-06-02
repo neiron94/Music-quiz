@@ -1,4 +1,4 @@
-import { genres, musicians, songs, getCurrentFormState } from '../global.js';
+import { genres, musicians, songs, getCurrentFormState } from '../model/global.js';
 
 const musicianModeGenreSelect = document.getElementById('musician-genre-select');
 const songModeGenreSelect = document.getElementById('song-genre-select');

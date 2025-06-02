@@ -1,4 +1,4 @@
-import {setCurrentQuiz} from "./global.js";
+import {setCurrentQuiz} from "../model/global.js";
 
 const quizForm = document.getElementById('quiz-set-up-form');
 const submitButton = document.getElementById('quiz-set-up-submit');

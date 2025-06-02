@@ -1,10 +1,11 @@
-import { setCurrentFormState } from "../global.js";
+import { setCurrentFormState } from "../model/global.js";
 import { getAllPossibleAnswers } from './answerProvider.js';
-import { getCurrentQuiz } from '../global.js';
+import { getCurrentQuiz } from '../model/global.js';
 
 const MAX_QUESTIONS = 50;
 
-export function setUpStateTransitions() {
+export function setUpQuizFormAutomaton() {
+    // Set up state transitions
     playNavigationButton.addEventListener('click', () => {
         if (getCurrentQuiz() === null)
             transitionTo('start');
@@ -22,6 +23,15 @@ export function setUpStateTransitions() {
     musicianByGenreRadio.addEventListener('change', () => transitionTo('musicianModeByGenreChecked'));
     musicianByGenreSelect.addEventListener('change', () => transitionTo('musicianModeByGenreSelected'));
     allMusiciansRadio.addEventListener('change', () => transitionTo('musicianModeByAllChecked'));
+
+    // Visualize current value for slide bars
+    questionNumberSlideBar.addEventListener('input', () => {
+        questionNumberCurrent.textContent = questionNumberSlideBar.value;
+    });
+
+    replayNumberSlideBar.addEventListener('input', () => {
+        replayNumberCurrent.textContent = replayNumberSlideBar.value;
+    });
 }
 
 
@@ -44,7 +54,8 @@ const questionNumberSlideBar = document.getElementById('question-number');
 const questionNumberCurrent = document.querySelector('#question-number-span .slide-bar-current');
 const questionNumberMax = document.querySelector('#question-number-span .slide-bar-max');
 
-
+const replayNumberSlideBar = document.getElementById('replay-number');
+const replayNumberCurrent = document.querySelector('#replay-number-span .slide-bar-current');
 
 const stateMap = {
     start: {

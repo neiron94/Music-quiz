@@ -121,4 +121,5 @@
 
 #next-question:hover {
     background-color: #005fa3;
+    cursor: pointer;
 }

@@ -1,4 +1,4 @@
-import {Quiz} from "./model/quiz.js";
+import {Quiz} from "./quiz.js";
 
 export const genres = []
 export const musicians = []
@@ -20,6 +20,7 @@ export function getCurrentQuiz() {
 
     return Object.assign(new Quiz(), JSON.parse(storedQuiz));
 }
+
 export function setCurrentQuiz(quiz) {
     if (quiz === null) {
         localStorage.removeItem('quiz');
